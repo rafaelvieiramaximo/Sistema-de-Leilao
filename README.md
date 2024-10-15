@@ -2,7 +2,7 @@ Aqui está a documentação que você pode anexar ao seu repositório no GitHub 
 
 ---
 
-# Sistema de Leilão Online - Documentação
+# Sistema de Leilão Online - Documentação BackEnd
 
 Este projeto é uma API backend desenvolvida em **Flask** para um sistema de leilão online. Ele inclui diversas funcionalidades, como cadastro de usuários, produtos, lances, pagamentos, fretes, avaliações e comunidades, utilizando um banco de dados PostgreSQL.
 
@@ -250,10 +250,7 @@ DB_KEY=postgresql://usuario:senha@localhost:5432/nome_do_banco
 
 ---
 
-## Autores
 
-- **Seu Nome** - Desenvolvedor
-- **Contribuidores** - Lista de contribuidores
 
 ---
 
