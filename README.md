@@ -251,7 +251,4 @@ DB_KEY=postgresql://usuario:senha@localhost:5432/nome_do_banco
 ---
 
 
-
----
-
 Essa documentação cobre o uso da aplicação, os modelos de dados e as rotas da API para o sistema de leilão online desenvolvido com Flask.
