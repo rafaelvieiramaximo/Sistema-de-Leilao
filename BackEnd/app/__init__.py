@@ -21,6 +21,19 @@ def create_app():
 
     db.init_app(app)
 
+     # Importa os models para garantir que o SQLAlchemy os reconheça
+    from app.models.users_model import Usuario
+    from app.models.product_model import Produto
+    from app.models.auction_model import Lance
+    from app.models.payment_model import Pagamento
+    from app.models.freight_model import Frete
+    from app.models.appraisal_model import Avaliacao
+    from app.models.community_model import Comunidade
+    
+    # Cria todas as tabelas, respeitando a ordem de dependências
+    with app.app_context():
+        db.create_all()
+
     from .routes import routes as routes_bp
     app.register_blueprint(routes_bp)  # Registra as rotas definidas no arquivo routes.py
 
