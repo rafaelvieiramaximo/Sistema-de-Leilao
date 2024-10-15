@@ -1,6 +1,8 @@
 #Aqui você define as "tabelas" do banco de dados usando a biblioteca SQLAlchemy.
 from app import db
 
+
+#Modulação da Tabela Usuario
 class Usuario(db.Model):
     id_usuario = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
