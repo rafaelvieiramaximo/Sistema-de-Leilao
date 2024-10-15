@@ -2,7 +2,14 @@
 # como /produtos, /usuarios, etc.
 
 from flask import Blueprint, jsonify, request
+from app.models.users_model import Usuario
 from app.models.product_model import Produto
+from app.models.auction_model import Lance
+from app.models.payment_model import Pagamento
+from app.models.freight_model import Frete
+from app.models.appraisal_model import Avaliacao
+from app.models.community_model import Comunidade
+    
 from app import db
 
 
@@ -29,7 +36,6 @@ def get_produtos_id(id):
 def create_produto():
     data = request.get_json()
     new_product = Produto(
-        id_produto = data['id_produto'],
         nome = data['nome'],
         descricao = data['descricao'],
         preco_inicial = data['preco_inicial'],
@@ -39,3 +45,32 @@ def create_produto():
     db.session.add(new_product)
     db.session.commit()
     return jsonify(new_product.to_dict()), 201 
+
+#Rotas para usuários
+
+@routes.route('/usuarios', methods=['GET'])
+def get_usuarios():
+    usuarios = Usuario.query.all()
+    return jsonify([u.to_dict() for u in usuarios])
+
+@routes.route('/usuario/<int:id>', methods=['GET'])
+def get_usuarios_id(id):
+    usuario = Usuario.query.get(id)
+    if usuario:
+        return jsonify(usuario.to_dict())
+    return jsonify({'message': 'Usuario nao encontrado'}), 404
+
+@routes.route('/usuario', methods=['POST'])
+def create_usuario():
+    data = request.get_json()
+    new_user = Usuario(
+        nome = data['nome'],
+        email = data['email'],
+        senha = data['senha'],
+        reputacao = data['reputacao']
+    )
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify(new_user.to_dict()), 201
+
+
