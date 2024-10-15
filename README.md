@@ -28,13 +28,13 @@ Este projeto é uma API backend desenvolvida em **Flask** para um sistema de lei
      cd sistema-de-leilao
 2. **Crie um ambiente virtual:
    
-    Entre no Git bash
+    ```bash
     Copie o código abaixo
     python -m venv venv
     source venv/bin/activate  # No Windows: venv\Scripts\activate
     Instale as dependências:
 
-    bash
+    ```bash
     Copiar código
     pip install -r requirements.txt
     Configure o banco de dados: Certifique-se de que você tem uma instância do PostgreSQL rodando. Crie um banco de dados e adicione a URL de conexão no arquivo .env:
