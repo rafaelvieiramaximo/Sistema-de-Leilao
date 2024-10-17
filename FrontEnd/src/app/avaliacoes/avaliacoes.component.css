@@ -1,0 +1,16 @@
+.lista-avaliacoes {
+  height: 30%;
+  overflow-y: auto;
+}
+
+.lista-avaliacoes::-webkit-scrollbar {
+  width: 10px;
+}
+
+.lista-avaliacoes::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.lista-avaliacoes::-webkit-scrollbar-thumb {
+  background: #888;
+}
