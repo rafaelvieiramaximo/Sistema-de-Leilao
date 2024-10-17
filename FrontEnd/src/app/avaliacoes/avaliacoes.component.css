@@ -1,6 +1,14 @@
+.interface-avaliacoes {
+  width: 95%;
+  margin: auto;
+  height: 100%;
+}
+
 .lista-avaliacoes {
   height: 30%;
   overflow-y: auto;
+  width: 95%;
+  margin: auto;
 }
 
 .lista-avaliacoes::-webkit-scrollbar {
