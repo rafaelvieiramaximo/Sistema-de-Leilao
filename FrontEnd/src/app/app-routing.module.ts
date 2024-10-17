@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'cadastro-user', component: CadastroUserComponent },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'cadastro-produtos', component: CadastroProdutosComponent },
-  { path: 'lances', component: LancesComponent },
+  { path: 'lances/:id', component: LancesComponent },
   { path: 'avaliacoes/:id', component: AvaliacoesComponent },
 ];
 

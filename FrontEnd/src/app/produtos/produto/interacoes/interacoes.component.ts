@@ -18,4 +18,12 @@ export class InteracoesComponent {
       this.produto.id = params['id'];
     });
   }
+
+  navLances() {
+    this.router.navigate(['/lances', this.produto.id]);
+
+    this.route.params.subscribe((params: Params) => {
+      this.produto.id = params['id'];
+    });
+  }
 }
