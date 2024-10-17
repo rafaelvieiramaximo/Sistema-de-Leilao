@@ -16,9 +16,10 @@ import { LancesComponent } from './lances/lances.component';
 import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { InteracoesComponent } from './produtos/produto/interacoes/interacoes.component';
 import { AvaliacaoComponent } from './avaliacoes/avaliacao/avaliacao.component';
+import { LanceComponent } from './lances/lance/lance.component';
 
 @NgModule({
-  declarations: [AppComponent, MainCardComponent, ProdutosComponent, ProdutoComponent, LoginComponent, CadastroUserComponent, CadastroProdutosComponent, LancesComponent, AvaliacoesComponent, InteracoesComponent, AvaliacaoComponent],
+  declarations: [AppComponent, MainCardComponent, ProdutosComponent, ProdutoComponent, LoginComponent, CadastroUserComponent, CadastroProdutosComponent, LancesComponent, AvaliacoesComponent, InteracoesComponent, AvaliacaoComponent, LanceComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
