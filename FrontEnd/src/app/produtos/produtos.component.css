@@ -1,0 +1,19 @@
+.produtos {
+  width: 95%;
+  overflow-y: auto;
+  height: 100%;
+  margin: auto;
+  overflow-y: auto;
+}
+
+.produtos::-webkit-scrollbar {
+  width: 10px;
+}
+
+.produtos::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.produtos::-webkit-scrollbar-thumb {
+  background: #888;
+}
