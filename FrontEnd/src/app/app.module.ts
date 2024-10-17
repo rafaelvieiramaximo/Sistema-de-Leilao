@@ -9,9 +9,14 @@ import { AppComponent } from './app.component';
 import { MainCardComponent } from './main-card/main-card.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { ProdutoComponent } from './produtos/produto/produto.component';
+import { LoginComponent } from './login/login.component';
+import { CadastroUserComponent } from './cadastro-user/cadastro-user.component';
+import { CadastroProdutosComponent } from './cadastro-produtos/cadastro-produtos.component';
+import { LancesComponent } from './lances/lances.component';
+import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 
 @NgModule({
-  declarations: [AppComponent, MainCardComponent, ProdutosComponent, ProdutoComponent],
+  declarations: [AppComponent, MainCardComponent, ProdutosComponent, ProdutoComponent, LoginComponent, CadastroUserComponent, CadastroProdutosComponent, LancesComponent, AvaliacoesComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
