@@ -1,7 +1,7 @@
 .main-card {
   background-color: #f9f6ee;
-  width: 30%;
-  height: 65%;
+  width: 60%;
+  height: 85%;
   border-radius: 16px;
   padding: 10px 20px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -9,5 +9,5 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centraliza corrigindo o deslocamento */
+  transform: translate(-50%, -50%);
 }
