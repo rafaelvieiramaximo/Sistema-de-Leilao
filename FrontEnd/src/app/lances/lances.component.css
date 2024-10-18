@@ -1,0 +1,24 @@
+.interface-lances {
+  width: 95%;
+  margin: auto;
+  height: 100%;
+}
+
+.lista-lances {
+  height: 30%;
+  overflow-y: auto;
+  width: 95%;
+  margin: auto;
+}
+
+.lista-lances::-webkit-scrollbar {
+  width: 10px;
+}
+
+.lista-lances::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.lista-lances::-webkit-scrollbar-thumb {
+  background: #888;
+}
