@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Produto } from '../../services/produto.service';
 
 @Component({
   selector: 'app-produto',
   templateUrl: './produto.component.html',
-  styleUrl: './produto.component.css',
+  styleUrls: ['./produto.component.css'],
 })
-export class ProdutoComponent {}
+export class ProdutoComponent {
+  @Input() produto!: Produto;
+}
