@@ -45,6 +45,18 @@ def create_usuario():
     db.session.commit()
     return jsonify(new_user.to_dict()), 201
 
+@routes.route('/usuario/<int:id>', methods=['PUT'])
+def edit_usuario(id):
+    usuario = Usuario.query.get(id)
+    if usuario:
+        data = request.get_json()
+        usuario.nome = data.get('nome', usuario.nome)
+        usuario.email = data.get('email', usuario.email)
+        usuario.senha = data.get('senha', usuario.senha)
+        usuario.reputacao = data.get('reputacao', usuario.reputacao)
+        db.session.commit()
+        return jsonify(usuario.to_dict())
+    return jsonify({'message': 'Usuario nao encontrado'}), 404
 
 #Rotas para Produtos
 @routes.route('/produtos', methods=['GET'])
@@ -105,4 +117,24 @@ def get_avaliacoes():
     avaliacoes = Avaliacao.query.all()
     return jsonify([a.to_dict() for a in avaliacoes])
 
+@routes.route('/avaliacao/<int:id_produto>', methods=['GET'])
+def get_avaliacao_pr_id(id_produto):
+    avaliacoes = Avaliacao.query.filter_by(id_produto=id_produto).all()
+    if avaliacoes:
+        return jsonify([avaliacao.to_dict() for avaliacao in avaliacoes])
+    return jsonify({'message': 'Avaliacao nao encontrada'}), 404
+
+
+@routes.route('/avaliacao', methods=['POST'])
+def postar_avaliacao():
+    data = request.get_json()
+    new_avaliacao = Avaliacao(
+        texto = data['texto'],
+        data = data['data'],
+        id_usuario = data['id_usuario'],
+        id_produto = data['id_produto']
+    )
+    db.session.add(new_avaliacao)
+    db.session.commit()
+    return jsonify(new_avaliacao.to_dict()), 201
 
