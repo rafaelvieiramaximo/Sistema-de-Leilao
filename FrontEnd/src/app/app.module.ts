@@ -18,10 +18,12 @@ import { InteracoesComponent } from './produtos/produto/interacoes/interacoes.co
 import { AvaliacaoComponent } from './avaliacoes/avaliacao/avaliacao.component';
 import { LanceComponent } from './lances/lance/lance.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 
 
 @NgModule({
-  declarations: [AppComponent, MainCardComponent, ProdutosComponent, ProdutoComponent, LoginComponent, CadastroUserComponent, CadastroProdutosComponent, LancesComponent, AvaliacoesComponent, InteracoesComponent, AvaliacaoComponent, LanceComponent],
+  declarations: [AppComponent, MainCardComponent, ProdutosComponent, ProdutoComponent, LoginComponent, CadastroUserComponent, CadastroProdutosComponent, LancesComponent, AvaliacoesComponent, InteracoesComponent, AvaliacaoComponent, LanceComponent, UsuariosComponent, UsuarioComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

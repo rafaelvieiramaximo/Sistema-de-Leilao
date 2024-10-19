@@ -1,0 +1,39 @@
+.usuario {
+  border-bottom: 2px solid gray;
+  margin: 20px 10px;
+  padding: 0 10px;
+  padding-bottom: 15px;
+}
+
+h3,
+h2 {
+  margin: 5px;
+}
+
+.nome-usuario {
+  font-size: 2em;
+}
+
+.dados-usuario {
+  display: flex;
+  flex-direction: column;
+}
+
+.id-user {
+  display: inline-flex;
+}
+
+.dados-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-deletar {
+  font-size: 1.3em;
+  background-color: #cc6666;
+  color: #fff;
+  padding: 7px 30px;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
