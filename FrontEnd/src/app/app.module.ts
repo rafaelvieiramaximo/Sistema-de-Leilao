@@ -13,7 +13,6 @@ import { CadastroUserComponent } from './cadastro-user/cadastro-user.component';
 import { CadastroProdutosComponent } from './cadastro-produtos/cadastro-produtos.component';
 import { LancesComponent } from './lances/lances.component';
 import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
-import { InteracoesComponent } from './produtos/produto/interacoes/interacoes.component';
 import { AvaliacaoComponent } from './avaliacoes/avaliacao/avaliacao.component';
 import { LanceComponent } from './lances/lance/lance.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +29,6 @@ import { UsuarioComponent } from './usuarios/usuario/usuario.component';
     CadastroProdutosComponent,
     LancesComponent,
     AvaliacoesComponent,
-    InteracoesComponent,
     AvaliacaoComponent,
     LanceComponent,
     UsuariosComponent,
