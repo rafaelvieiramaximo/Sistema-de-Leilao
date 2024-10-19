@@ -8,8 +8,7 @@ import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
-  { path: '', component:  },
-  { path: 'cadastro-user', component: CadastroUserComponent },
+  { path: '', component: CadastroUserComponent },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'cadastro-produtos', component: CadastroProdutosComponent },
   { path: 'lances/:id', component: LancesComponent },
