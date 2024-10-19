@@ -58,6 +58,15 @@ def edit_usuario(id):
         return jsonify(usuario.to_dict())
     return jsonify({'message': 'Usuario nao encontrado'}), 404
 
+@routes.route('/usuario/<int:id>', methods=['DELETE'])
+def delete_usuario(id):
+    usuario = Usuario.query.get(id)
+    if usuario:
+        db.session.delete(usuario)
+        db.session.commit()
+        return jsonify({'message': 'Usuario deletado com sucesso'}), 204
+    return jsonify({'message': 'Usuario nao encontrado'}), 404
+
 #Rotas para Produtos
 @routes.route('/produtos', methods=['GET'])
 def get_produtos():

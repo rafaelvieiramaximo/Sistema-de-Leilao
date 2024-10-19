@@ -22,4 +22,7 @@ export class UsuarioService {
   getUsuarios(): Observable<Usuario[]> {
       return this.http.get<Usuario[]>(this.apiUrl);
   }
+  delete(): Observable<void> {
+      return this.http.delete<void>(`$http://localhost:5000//usuario/$int:id`);
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Usuario } from '../../services/usuario.service';
+import { Usuario, UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-usuario',
@@ -8,4 +8,11 @@ import { Usuario } from '../../services/usuario.service';
 })
 export class UsuarioComponent {
   @Input() usuario!: Usuario;
+
+  constructor(private usuarioService : UsuarioService){}
+
+  delete(){
+      this.usuarioService.delete();
+  }
+
 }
