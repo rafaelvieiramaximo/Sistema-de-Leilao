@@ -15,7 +15,10 @@ const routes: Routes = [
     path: 'lances/:data/:descricao/:id_produto/:nome/:preco',
     component: LancesComponent,
   },
-  { path: 'avaliacoes/:id', component: AvaliacoesComponent },
+  {
+    path: 'avaliacoes/:data/:descricao/:id_produto/:nome/:preco',
+    component: AvaliacoesComponent,
+  },
   { path: 'usuarios', component: UsuariosComponent },
 ];
 
