@@ -1,29 +1,22 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Produto } from '../../../services/produto.service';
 
 @Component({
   selector: 'app-interacoes',
   templateUrl: './interacoes.component.html',
-  styleUrl: './interacoes.component.css',
+  styleUrls: ['./interacoes.component.css'],
 })
 export class InteracoesComponent {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  @Input() produto!: Produto;
 
-  produto: { id: number } = { id: 0 };
+  constructor(private router: Router) {}
 
   navAvaliacao() {
-    this.router.navigate(['/avaliacoes', this.produto.id]);
-
-    this.route.params.subscribe((params: Params) => {
-      this.produto.id = params['id'];
-    });
+    this.router.navigate(['/avaliacoes', this.produto.id_produto]);
   }
 
   navLances() {
-    this.router.navigate(['/lances', this.produto.id]);
-
-    this.route.params.subscribe((params: Params) => {
-      this.produto.id = params['id'];
-    });
+    this.router.navigate(['/lances', this.produto.id_produto]);
   }
 }

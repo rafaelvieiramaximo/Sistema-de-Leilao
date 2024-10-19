@@ -1,7 +1,6 @@
 <div class="interface-leilao">
   <div class="produtos">
-    <app-produto></app-produto>
-    <app-produto></app-produto>
+    <app-produto *ngFor="let produto of produtos" [produto]="produto"></app-produto>
   </div>
   <div class="bottom-produtos">
     <button class="anunciar-btn" (click)="navAnunciarProduto()">

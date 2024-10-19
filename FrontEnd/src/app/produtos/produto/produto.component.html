@@ -1,25 +1,14 @@
 <div class="produto">
-  <h2 class="nome-produto">Nome do Produto</h2>
-  <h3>Id: #0000</h3>
-
-  <div>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea eveniet
-      perferendis non nulla beatae est aperiam explicabo, assumenda earum
-      inventore fuga sit, ad modi consectetur eos repellat? Tempora, omnis
-      rerum!
-    </p>
-  </div>
-
+  <h3 class="nome-produto">{{ produto.nome }}</h3>
+  <h3>ID : #{{ produto.id_produto }}</h3>
+  <p>{{ produto.descricao }}</p>
   <div class="dados-produto">
-    <h3>Preço inicial: R$ 349,99</h3>
+    <h3>Preço Inicial: R$ {{ produto.preco_inicial }}</h3>
+    <h3>Data da postagem: {{ produto.data_inicial | date }}</h3>
+  </div>
+  <div class="dados-bottom">
+    <h3 class="id-user">Id do usuário que postou: #00</h3>
 
-    <h3>Data de postagem: dd/mm/aaaa</h3>
-
-    <div class="dados-bottom">
-      <h3 class="id-user">Id do usuário que postou: #00</h3>
-
-      <app-interacoes></app-interacoes>
-    </div>
+    <app-interacoes></app-interacoes>
   </div>
 </div>
