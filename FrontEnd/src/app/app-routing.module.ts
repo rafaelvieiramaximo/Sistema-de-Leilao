@@ -11,7 +11,10 @@ const routes: Routes = [
   { path: '', component: CadastroUserComponent },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'cadastro-produtos', component: CadastroProdutosComponent },
-  { path: 'lances/:id', component: LancesComponent },
+  {
+    path: 'lances/:data/:descricao/:id_produto/:nome/:preco',
+    component: LancesComponent,
+  },
   { path: 'avaliacoes/:id', component: AvaliacoesComponent },
   { path: 'usuarios', component: UsuariosComponent },
 ];
