@@ -24,8 +24,15 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-  navAvaliacao() {
-    this.router.navigate(['/avaliacoes', this.produto.id_produto]);
+  navAvaliacao(produtoLink: Produto) {
+    this.router.navigate([
+      '/avaliacoes',
+      produtoLink.data_inicial,
+      produtoLink.descricao,
+      produtoLink.id_produto,
+      produtoLink.nome,
+      produtoLink.preco_inicial,
+    ]);
   }
 
   navLances(produtoLink: Produto) {
