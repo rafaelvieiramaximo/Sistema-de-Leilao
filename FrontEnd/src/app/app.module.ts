@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { MainCardComponent } from './main-card/main-card.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { ProdutoComponent } from './produtos/produto/produto.component';
-import { LoginComponent } from './login/login.component';
 import { CadastroUserComponent } from './cadastro-user/cadastro-user.component';
 import { CadastroProdutosComponent } from './cadastro-produtos/cadastro-produtos.component';
 import { LancesComponent } from './lances/lances.component';
@@ -21,9 +20,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 
-
 @NgModule({
-  declarations: [AppComponent, MainCardComponent, ProdutosComponent, ProdutoComponent, LoginComponent, CadastroUserComponent, CadastroProdutosComponent, LancesComponent, AvaliacoesComponent, InteracoesComponent, AvaliacaoComponent, LanceComponent, UsuariosComponent, UsuarioComponent],
+  declarations: [
+    AppComponent,
+    MainCardComponent,
+    ProdutosComponent,
+    ProdutoComponent,
+    CadastroUserComponent,
+    CadastroProdutosComponent,
+    LancesComponent,
+    AvaliacoesComponent,
+    InteracoesComponent,
+    AvaliacaoComponent,
+    LanceComponent,
+    UsuariosComponent,
+    UsuarioComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
   imports: [
     AppModule,
     ServerModule,
-    HttpClientModule,  // Import HttpClientModule to make HTTP requests in Angular
+    HttpClientModule, // Import HttpClientModule to make HTTP requests in Angular
   ],
   bootstrap: [AppComponent],
 })
