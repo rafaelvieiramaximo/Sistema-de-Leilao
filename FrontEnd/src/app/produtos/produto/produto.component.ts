@@ -17,7 +17,6 @@ export class ProdutoComponent {
   }
 
   navLances() {
-    // this.router.navigate(['/lances', this.produto.id_produto]);
-    console.log(this.produto);
+    this.router.navigate(['/lances', this.produto.id_produto]);
   }
 }
