@@ -17,10 +17,12 @@ import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { InteracoesComponent } from './produtos/produto/interacoes/interacoes.component';
 import { AvaliacaoComponent } from './avaliacoes/avaliacao/avaliacao.component';
 import { LanceComponent } from './lances/lance/lance.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [AppComponent, MainCardComponent, ProdutosComponent, ProdutoComponent, LoginComponent, CadastroUserComponent, CadastroProdutosComponent, LancesComponent, AvaliacoesComponent, InteracoesComponent, AvaliacaoComponent, LanceComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
