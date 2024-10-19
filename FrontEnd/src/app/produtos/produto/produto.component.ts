@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Produto } from '../../services/produto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto',
@@ -8,4 +9,14 @@ import { Produto } from '../../services/produto.service';
 })
 export class ProdutoComponent {
   @Input() produto!: Produto;
+
+  constructor(private router: Router) {}
+
+  navAvaliacao() {
+    this.router.navigate(['/avaliacoes', this.produto.id_produto]);
+  }
+
+  navLances() {
+    this.router.navigate(['/lances', this.produto.id_produto]);
+  }
 }

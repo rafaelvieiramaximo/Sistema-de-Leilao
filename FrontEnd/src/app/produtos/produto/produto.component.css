@@ -27,3 +27,36 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
+
+.interacoes {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: 5%;
+}
+
+.btn-aval {
+  width: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+.btn-lances {
+  font-size: 1.3em;
+  background-color: #6699cc;
+  color: #fff;
+  padding: 7px 30px;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-lances:hover {
+  background-color: #356494;
+}
