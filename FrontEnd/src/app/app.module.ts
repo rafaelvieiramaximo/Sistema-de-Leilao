@@ -18,6 +18,7 @@ import { LanceComponent } from './lances/lance/lance.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { UsuarioComponent } from './usuarios/usuario/usuario.component';
     UsuariosComponent,
     UsuarioComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
