@@ -2,6 +2,7 @@ click==8.1.7
 colorama==0.4.6
 distlib==0.3.9
 Flask==3.0.3
+Flask-CORS==3.0.10   # Adicionado para suporte a CORS
 Flask-SQLAlchemy==3.0.3
 greenlet==3.1.1
 itsdangerous==2.2.0
