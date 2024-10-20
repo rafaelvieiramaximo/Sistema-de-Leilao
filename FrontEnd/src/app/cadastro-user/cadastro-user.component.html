@@ -10,29 +10,25 @@
 <body>
     <h1 style="text-align: center;">Cadastro de Usuários:</h1>
 
-    <form style="display: flex; flex-direction: column; align-items: center;">
-        
+    <form (ngSubmit)="cadastrarUsuario()" style="display: flex; flex-direction: column; align-items: center;">
         <label for="nome">Nome completo:</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo">
-
-  
+        <input type="text" id="nome" [(ngModel)]="nome" name="nome" placeholder="Digite seu nome completo" required>
+    
         <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
-
-  
+        <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Digite seu e-mail" required>
+    
         <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
-
- 
+        <input type="password" id="senha" [(ngModel)]="senha" name="senha" placeholder="Digite sua senha" required>
+    
         <label for="confirmarSenha">Confirmar Senha:</label>
-        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme sua senha">
-
- 
+        <input type="password" id="confirmarSenha" [(ngModel)]="confirmarSenha" name="confirmarSenha" placeholder="Confirme sua senha" required>
+    
         <div style="margin-top: 20px;">
-            <button type="button">Ver Usuários Cadastrados</button>
+            <button type="submit">Cadastrar Usuário</button>
+            <button type="button" style="margin-left: 10px;">Ver Usuários Cadastrados</button>
             <button type="button" style="margin-left: 10px;">Ver Produtos Cadastrados</button>
         </div>
     </form>
+    
 </body>
 </html>
-

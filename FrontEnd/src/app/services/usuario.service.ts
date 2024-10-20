@@ -30,7 +30,7 @@ export class UsuarioService {
   }
 
   // Método para criar um novo usuário
-  postUsuario(usuario: Partial<Usuario>): Observable<Usuario> {
+  createUsuario(usuario: Partial<Usuario>): Observable<Usuario> {
     return this.http.post<Usuario>('http://localhost:5000/usuario', usuario);
   }
 
