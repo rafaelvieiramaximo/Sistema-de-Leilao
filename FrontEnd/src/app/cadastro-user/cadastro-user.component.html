@@ -1,38 +1,57 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuários</title>
-    <link rel="stylesheet" href="cadastro-user.component.css">
-</head>
-<body>
-    <h1 style="text-align: center;">Cadastro de Usuários:</h1>
-
-    <form style="display: flex; flex-direction: column; align-items: center;">
-        
-        <label for="nome">Nome completo:</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo">
-
+<div class="container mt-5">
+    <h1>Cadastrar Usuario</h1>
+</div>
+<div class="container mt-5">
+    <form (ngSubmit)="cadastrarUsuario()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input
+          type="text"
+          id="nome"
+          class="form-control"
+          [(ngModel)]="nome"
+          name="nome"
+          required
+        />
+      </div>
   
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
-
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          [(ngModel)]="email"
+          name="email"
+          required
+        />
+      </div>
   
+      <div class="form-group">
         <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
-
- 
-        <label for="confirmarSenha">Confirmar Senha:</label>
-        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme sua senha">
-
- 
-        <div style="margin-top: 20px;">
-            <button type="button">Ver Usuários Cadastrados</button>
-            <button type="button" style="margin-left: 10px;">Ver Produtos Cadastrados</button>
-        </div>
+        <input
+          type="password"
+          id="senha"
+          class="form-control"
+          [(ngModel)]="senha"
+          name="senha"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmarSenha">Confirmar:</label>
+        <input
+          type="password"
+          id="confirmarSenha"
+          class="form-control"
+          [(ngModel)]="confirmarSenha"
+          name="confirmarSenha"
+          required
+        />
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Cadastrar</button>
     </form>
-</body>
-</html>
-
+  </div>
+  

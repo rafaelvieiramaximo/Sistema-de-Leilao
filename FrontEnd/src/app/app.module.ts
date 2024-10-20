@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms'; // Importando o FormsModule
 
 @NgModule({
   declarations: [
@@ -35,7 +36,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UsuariosComponent,
     UsuarioComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    FormsModule, // Adicione o FormsModule aqui
+  ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
