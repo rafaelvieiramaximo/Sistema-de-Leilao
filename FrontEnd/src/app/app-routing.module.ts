@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { CadastroUserComponent } from './cadastro-user/cadastro-user.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { CadastroProdutosComponent } from './cadastro-produtos/cadastro-produtos.component';
@@ -9,12 +8,17 @@ import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'cadastro-user', component: CadastroUserComponent },
+  { path: 'usuario', component: CadastroUserComponent },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'cadastro-produtos', component: CadastroProdutosComponent },
-  { path: 'lances/:id', component: LancesComponent },
-  { path: 'avaliacoes/:id', component: AvaliacoesComponent },
+  {
+    path: 'lances/:data/:descricao/:id_produto/:nome/:preco',
+    component: LancesComponent,
+  },
+  {
+    path: 'avaliacoes/:data/:descricao/:id_produto/:nome/:preco',
+    component: AvaliacoesComponent,
+  },
   { path: 'usuarios', component: UsuariosComponent },
 ];
 

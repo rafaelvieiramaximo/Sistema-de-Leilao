@@ -2,6 +2,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
+from flask_cors import CORS  # Importa o CORS   
 import os
 
 
@@ -20,6 +21,8 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_KEY')  # Caminho do banco de dados
 
     db.init_app(app)
+
+    CORS(app)  # Permite CORS para todas as rotas e origens
     
     # Cria todas as tabelas, respeitando a ordem de dependências
     with app.app_context():
