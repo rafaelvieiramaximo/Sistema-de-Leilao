@@ -6,9 +6,17 @@ import { CadastroProdutosComponent } from './cadastro-produtos/cadastro-produtos
 import { LancesComponent } from './lances/lances.component';
 import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
-  { path: 'usuario', component: CadastroUserComponent },
+  {
+    path: 'usuario',
+    component: CadastroUserComponent,
+  },
+  {
+    path: 'usuario/:email/:id_user/:nome/:reputacao',
+    component: EditUserComponent,
+  },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'cadastro-produtos', component: CadastroProdutosComponent },
   {

@@ -10,14 +10,12 @@ export interface Usuario {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class UsuarioService {
-
   private apiUrl = 'http://localhost:5000/usuarios';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Método para obter todos os usuários
   getUsuarios(): Observable<Usuario[]> {
@@ -36,7 +34,10 @@ export class UsuarioService {
 
   // Método para editar um usuário existente por ID
   editUsuario(id: number, usuario: Partial<Usuario>): Observable<Usuario> {
-    return this.http.put<Usuario>(`http://localhost:5000/usuario/${id}`, usuario);
+    return this.http.put<Usuario>(
+      `http://localhost:5000/usuario/${id}`,
+      usuario
+    );
   }
 
   // Método para deletar um usuário por ID
