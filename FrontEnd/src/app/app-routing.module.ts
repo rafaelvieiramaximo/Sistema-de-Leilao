@@ -13,7 +13,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
   {
-    path: 'usuario',
+    path: '',
     component: CadastroUserComponent,
   },
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
     component: AvaliacoesComponent,
   },
   { path: 'usuarios', component: UsuariosComponent },
-  {path: 'pagamentos', component: PagamentosComponent}
+  {path: 'pagamentos', component: PagamentosComponent},
 
   { path: 'comunidades', component: ComunidadesComponent },
 ];
