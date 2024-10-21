@@ -1,0 +1,32 @@
+<div class="interface-lances">
+  <app-produto></app-produto>
+
+  <div class="lista-lances">
+    <app-lance *ngFor="let lan of lancesProduto" [lance]="lan"></app-lance>
+  </div>
+
+  <div class="bottom">
+    <form
+      (ngSubmit)="cadastroLance()"
+      #avalForm="ngForm"
+      class="form-avaliacao"
+    >
+      <div class="sec">
+        <h3>Id User:</h3>
+        <input type="number" [(ngModel)]="id_user" name="id_user" required />
+      </div>
+
+      <div class="sec">
+        <h3>Lance:</h3>
+        <input
+          type="number"
+          [(ngModel)]="valor_lance"
+          name="valor_lance"
+          required
+        />
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>

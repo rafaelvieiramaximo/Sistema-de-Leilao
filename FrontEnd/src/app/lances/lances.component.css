@@ -1,0 +1,103 @@
+.interface-lances {
+  width: 95%;
+  margin: auto;
+  height: 70%;
+}
+
+.lista-lances {
+  height: 30%;
+  overflow-y: auto;
+  width: 95%;
+  margin: auto;
+  border-bottom: 2px solid gray;
+}
+
+.lista-lances::-webkit-scrollbar {
+  width: 10px;
+}
+
+.lista-lances::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.lista-lances::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.bottom {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.sec {
+  width: 50%;
+}
+
+input {
+  width: 70%;
+  height: 50%;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column; /* Alinha os itens na coluna */
+  margin-top: 10px;
+}
+
+.form-avaliacao {
+  display: flex; /* Usando flexbox para alinhar os elementos do formulário */
+  justify-content: space-between; /* Espaça uniformemente entre os campos */
+  align-items: center; /* Alinha verticalmente os itens */
+}
+
+.sec {
+  flex: 1; /* Permite que os campos de entrada cresçam igualmente */
+  margin-right: 10px; /* Espaço entre os campos */
+}
+
+.sec:last-child {
+  margin-right: 0; /* Remove o espaço do último campo */
+}
+
+input {
+  width: 100%; /* Ocupa toda a largura do container */
+  height: 40px; /* Altura fixada para melhor alinhamento */
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}

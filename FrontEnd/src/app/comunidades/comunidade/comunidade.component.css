@@ -1,0 +1,28 @@
+.comunidade {
+    border-bottom: 2px solid gray;
+    margin: 20px 10px;
+    padding: 0 10px;
+    padding-bottom: 15px;
+  }
+  
+  h3,
+  h2 {
+    margin: 5px;
+  }
+  
+  .nome-comunidade {
+    font-size: 2em;
+  }
+  
+  .dados-comunidade {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .id-community {
+    display: inline-flex;
+  }
+  .id-user {
+    display: inline-flex;
+  }
+  

@@ -1,0 +1,10 @@
+<div class="usuario">
+  <h3 class="nome-usuario">{{ usuario.nome }}</h3>
+  <h3>ID : #{{ usuario.id_usuario }}</h3>
+  <p>{{ usuario.email }}</p>
+  <h3>Reputação : {{ usuario.reputacao }}</h3>
+  <div class="dados-bottom">
+    <button class="btn-deletar" (click)="deleteUsuario()">DELETAR</button>
+    <button class="btn-editar" (click)="editUsuario()">EDITAR</button>
+  </div>
+</div>

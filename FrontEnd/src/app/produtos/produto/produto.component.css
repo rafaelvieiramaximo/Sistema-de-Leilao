@@ -1,0 +1,62 @@
+.produto {
+  border-bottom: 2px solid gray;
+  margin: 20px 10px;
+  padding: 0 10px;
+  padding-bottom: 15px;
+}
+
+h3,
+h2 {
+  margin: 5px;
+}
+
+.nome-produto {
+  font-size: 2em;
+}
+
+.dados-produto {
+  display: flex;
+  flex-direction: column;
+}
+
+.id-user {
+  display: inline-flex;
+}
+
+.dados-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.interacoes {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: 5%;
+}
+
+.btn-aval {
+  width: 30%;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+.btn-lances {
+  font-size: 1.3em;
+  background-color: #6699cc;
+  color: #fff;
+  padding: 7px 30px;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-lances:hover {
+  background-color: #356494;
+}

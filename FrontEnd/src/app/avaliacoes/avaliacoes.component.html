@@ -1,0 +1,26 @@
+<div class="interface-avaliacoes">
+  <app-produto></app-produto>
+
+  <div class="lista-avaliacoes">
+    <app-avaliacao
+      *ngFor="let aval of lancesProduto"
+      [avaliacao]="aval"
+    ></app-avaliacao>
+  </div>
+
+  <div class="bottom">
+    <form (ngSubmit)="cadastroAval()" #avalForm="ngForm" class="form-avaliacao">
+      <div class="sec">
+        <h3>Id User:</h3>
+        <input type="number" [(ngModel)]="id_user" name="id_user" required />
+      </div>
+
+      <div class="sec">
+        <h3>Avaliação:</h3>
+        <input type="text" [(ngModel)]="texto" name="texto" required />
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>

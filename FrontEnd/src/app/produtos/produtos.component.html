@@ -1,0 +1,13 @@
+<div class="interface-leilao">
+  <div class="produtos">
+    <app-produto
+      *ngFor="let produto of produtos"
+      [produto]="produto"
+    ></app-produto>
+  </div>
+  <div class="bottom-produtos">
+    <button class="anunciar-btn" (click)="navAnunciarProduto()">
+      Anunciar Produto
+    </button>
+  </div>
+</div>

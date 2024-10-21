@@ -1,0 +1,48 @@
+<h1 class="m-3">Pagamentos</h1>
+<div style="width: 100%; max-height: 520px; overflow-y: auto;">
+  <table class="table table-success table-striped text-center border border-0 rounded">
+    <thead>
+      <tr>
+        <th>ID Pagamento</th>
+        <th>ID Usuário</th>
+        <th>ID Produto</th>
+        <th>Valor Total</th>
+        <th>Forma de Pagamento</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pagamento of pagamentos">
+        <td>{{ pagamento.id_pagamento }}</td>
+        <td>{{ pagamento.id_usuario }}</td>
+        <td>{{ pagamento.id_produto }}</td>
+        <td>{{ pagamento.valor_total }}</td>
+        <td>{{ pagamento.forma_pagamento }}</td>
+        <td>{{ pagamento.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="d-grid gap-2 mt-4">
+  <button class="btn btn-success" type="button" (click)="openModal()">Adicionar Pagamento</button>
+</div>
+
+<div id="myModal" class="modal" [ngStyle]="{'display': displayStyle}">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Adicionar Pagamento</h2>
+    <form (submit)="addPagamento($event)">
+      <label for="id_usuario">ID Usuário:</label>
+      <input type="number" id="id_usuario" name="id_usuario" required><br><br>
+      <label for="id_produto">ID Produto:</label>
+      <input type="number" id="id_produto" name="id_produto" required><br><br>
+      <label for="valor_total">Valor Total:</label>
+      <input type="number" id="valor_total" name="valor_total" required><br><br>
+      <label for="forma_pagamento">Forma de Pagamento:</label>
+      <input type="text" id="forma_pagamento" name="forma_pagamento" required><br><br>
+      <label for="status">Status:</label>
+      <input type="text" id="status" name="status" required><br><br>
+      <button type="submit" class="btn btn-primary">Adicionar</button>
+    </form>
+  </div>
+</div>
