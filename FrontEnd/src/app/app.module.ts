@@ -19,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms'; // Importando o FormsModule
+import { FormsModule } from '@angular/forms';
+import { ComunidadesComponent } from './comunidades/comunidades.component';
+import { ComunidadeComponent } from './comunidades/comunidade/comunidade.component'; // Importando o FormsModule
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { FormsModule } from '@angular/forms'; // Importando o FormsModule
     LanceComponent,
     UsuariosComponent,
     UsuarioComponent,
+    ComunidadesComponent,
+    ComunidadeComponent,
   ],
   imports: [
     BrowserModule,

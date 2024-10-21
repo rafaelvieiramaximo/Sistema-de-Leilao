@@ -6,6 +6,8 @@ import { CadastroProdutosComponent } from './cadastro-produtos/cadastro-produtos
 import { LancesComponent } from './lances/lances.component';
 import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ComunidadeComponent } from './comunidades/comunidade/comunidade.component';
+import { ComunidadesComponent } from './comunidades/comunidades.component';
 
 const routes: Routes = [
   { path: 'usuario', component: CadastroUserComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
     component: AvaliacoesComponent,
   },
   { path: 'usuarios', component: UsuariosComponent },
+
+  { path: 'comunidades', component: ComunidadesComponent },
 ];
 
 @NgModule({
