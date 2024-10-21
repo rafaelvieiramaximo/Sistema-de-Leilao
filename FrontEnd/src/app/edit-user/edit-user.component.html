@@ -1,8 +1,8 @@
 <div class="container mt-5">
-  <h1>Cadastrar Usuario</h1>
+  <h1>Editar Usuario</h1>
 </div>
 <div class="container mt-5">
-  <form (ngSubmit)="cadastrarUsuario()" #userForm="ngForm">
+  <form (ngSubmit)="salvarUsuario()" #userForm="ngForm">
     <div class="form-group">
       <label for="nome">Nome:</label>
       <input
@@ -11,7 +11,6 @@
         class="form-control"
         [(ngModel)]="nome"
         name="nome"
-        required
       />
     </div>
 
@@ -23,40 +22,28 @@
         class="form-control"
         [(ngModel)]="email"
         name="email"
-        required
       />
     </div>
 
     <div class="form-group">
-      <label for="senha">Senha:</label>
+      <label for="email">Reputação:</label>
       <input
-        type="password"
-        id="senha"
+        type="number"
+        id="reputacao"
         class="form-control"
-        [(ngModel)]="senha"
-        name="senha"
-        required
+        [(ngModel)]="reputacao"
+        name="reputacao"
       />
     </div>
 
-    <div class="form-group">
-      <label for="confirmarSenha">Confirmar:</label>
-      <input
-        type="password"
-        id="confirmarSenha"
-        class="form-control"
-        [(ngModel)]="confirmarSenha"
-        name="confirmarSenha"
-        required
-      />
-    </div>
+    <br />
 
     <button
       type="submit"
       class="btn btn-primary"
       [disabled]="!userForm.form.valid"
     >
-      Cadastrar
+      Salvar alterações
     </button>
   </form>
 </div>

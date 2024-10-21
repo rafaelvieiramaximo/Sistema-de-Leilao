@@ -22,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ComunidadesComponent } from './comunidades/comunidades.component';
 import { ComunidadeComponent } from './comunidades/comunidade/comunidade.component'; // Importando o FormsModule
+import { EditUserComponent } from './edit-user/edit-user.component'; // Importando o FormsModule
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ComunidadeComponent } from './comunidades/comunidade/comunidade.compone
     UsuarioComponent,
     ComunidadesComponent,
     ComunidadeComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,

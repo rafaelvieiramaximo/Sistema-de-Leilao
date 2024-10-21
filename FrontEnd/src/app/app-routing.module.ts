@@ -8,9 +8,17 @@ import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ComunidadeComponent } from './comunidades/comunidade/comunidade.component';
 import { ComunidadesComponent } from './comunidades/comunidades.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
-  { path: 'usuario', component: CadastroUserComponent },
+  {
+    path: 'usuario',
+    component: CadastroUserComponent,
+  },
+  {
+    path: 'usuario/:email/:id_user/:nome/:reputacao',
+    component: EditUserComponent,
+  },
   { path: 'produtos', component: ProdutosComponent },
   { path: 'cadastro-produtos', component: CadastroProdutosComponent },
   {
