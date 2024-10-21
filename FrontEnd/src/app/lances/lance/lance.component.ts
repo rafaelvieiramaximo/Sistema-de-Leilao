@@ -19,6 +19,6 @@ export class LanceComponent {
     this.id_usuario = this.lance.id_usuario;
     this.id_produto = this.lance.id_produto;
     this.valor_lance = this.lance.valor_lance;
-    this.data = this.lance.data;
+    this.data = this.lance.data_lance;
   }
 }

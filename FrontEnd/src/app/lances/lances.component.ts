@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LancesComponent {
   lancesProduto: Lance[] = [];
   id_user: number | null = null;
-  valor: number = 0;
+  valor_lance: number = 0;
 
   dataAtual = new Date();
   dia = String(this.dataAtual.getDate()).padStart(2, '0');
@@ -40,11 +40,11 @@ export class LancesComponent {
     });
   }
 
-  cadastroAval() {
+  cadastroLance() {
     const novoLance = {
       id_usuario: this.id_user !== null ? this.id_user : 0,
-      valor: this.valor,
-      data: this.dataFormatada,
+      valor_lance: this.valor_lance,
+      data_lance: this.dataFormatada,
       id_produto: +this.produtoId,
     };
 

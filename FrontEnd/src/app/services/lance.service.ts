@@ -7,7 +7,7 @@ export interface Lance {
   valor_lance: number;
   id_usuario: number;
   id_produto: number;
-  data: string; // Pode ser ajustado para Date, dependendo do uso
+  data_lance: string; // Pode ser ajustado para Date, dependendo do uso
 }
 
 @Injectable({
