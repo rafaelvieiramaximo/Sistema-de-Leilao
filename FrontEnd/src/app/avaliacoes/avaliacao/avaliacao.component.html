@@ -1,18 +1,13 @@
 <div class="layout-avaliacao">
   <div class="esquerda">
-    <h3>Usuário: #00</h3>
-    <h3>Produto: #0000</h3>
-    <h3>Data: dd/mm/aaaa</h3>
+    <h3>Usuário: #{{ avaliacao.id_usuario }}</h3>
+    <h3>Produto: #{{ avaliacao.id_produto }}</h3>
+    <h3>Data: {{ avaliacao.data | date }}</h3>
   </div>
 
   <div class="direita">
     <h3>Avaliação:</h3>
 
-    <p class="aval">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores autem
-      magnam eius, perferendis sint beatae repellat esse incidunt expedita
-      laborum eum, cupiditate laboriosam id consequuntur et. Totam esse error
-      placeat.
-    </p>
+    <p class="aval">{{ avaliacao.texto }}</p>
   </div>
 </div>
