@@ -14,9 +14,9 @@ export class AvaliacoesComponent {
 
   dataAtual = new Date();
   dia = String(this.dataAtual.getDate()).padStart(2, '0');
-  mes = String(this.dataAtual.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
+  mes = String(this.dataAtual.getMonth() + 1).padStart(2, '0');
   ano = this.dataAtual.getFullYear();
-  dataFormatada = `${this.dia}/${this.mes}/${this.ano}`;
+  dataFormatada = `${this.ano}-${this.mes}-${this.dia}`;
   produtoId: number = 0;
 
   constructor(
@@ -41,10 +41,20 @@ export class AvaliacoesComponent {
 
   cadastroAval() {
     const novaAval = {
-      id_usuario: this.id_user,
+      id_usuario: this.id_user !== null ? this.id_user : 0,
       texto: this.texto,
       data: this.dataFormatada,
-      id_produto: this.produtoId,
+      id_produto: +this.produtoId,
     };
+
+    this.avaliacaoServ.createAvaliacao(novaAval).subscribe({
+      next: (avaliacaoCriada) => {
+        console.log('Avaliação criada com sucesso:', avaliacaoCriada);
+        // Você pode adicionar lógica para atualizar a interface ou navegar
+      },
+      error: (err) => {
+        console.error('Erro ao criar avaliação:', err);
+      },
+    });
   }
 }
