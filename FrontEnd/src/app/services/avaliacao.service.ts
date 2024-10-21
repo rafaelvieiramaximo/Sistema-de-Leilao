@@ -11,11 +11,11 @@ export interface Avaliacao {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AvaliacaoService {
   private apiUrl = 'http://localhost:5000/avaliacoes';
-  private apiUrl2 = 'http://localhost:5000/avaliacao'; 
+  private apiUrl2 = 'http://localhost:5000/avaliacao';
 
   constructor(private http: HttpClient) {}
 
