@@ -45,4 +45,8 @@ export class EditUserComponent {
         this.router.navigate(['/usuarios']);
       });
   }
+
+  sucess(){
+    alert('Usuário editado com sucesso!');
+  }
 }

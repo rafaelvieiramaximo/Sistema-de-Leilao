@@ -1,5 +1,9 @@
-<div class="interface-usuarios">
+<div class="interface-usuarios mt-3">
   <div class="usuarios">
     <app-usuario *ngFor="let usuario of usuarios" [usuario]="usuario"></app-usuario>
   </div>
+</div>
+
+<div class="d-grid gap-2">
+  <button class="btn btn-outline-info" (click)="route_produtos()" type="button">Produtos</button>
 </div>
