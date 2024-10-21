@@ -21,6 +21,9 @@ import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { PagamentosComponent } from './pagamentos/pagamentos.component'; // Importando o FormsModule
+import { ComunidadesComponent } from './comunidades/comunidades.component';
+import { ComunidadeComponent } from './comunidades/comunidade/comunidade.component'; // Importando o FormsModule
+import { EditUserComponent } from './edit-user/edit-user.component'; // Importando o FormsModule
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { PagamentosComponent } from './pagamentos/pagamentos.component'; // Impo
     UsuariosComponent,
     UsuarioComponent,
     PagamentosComponent,
+    ComunidadesComponent,
+    ComunidadeComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,

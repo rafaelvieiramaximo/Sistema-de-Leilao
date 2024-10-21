@@ -146,8 +146,8 @@ def get_lance_pr_id(id_produto):
 def postar_lance():
     data = request.get_json()
     new_lance = Lance(
-        valor = data['valor'],
-        data = data['data'],
+        valor_lance = data['valor_lance'],
+        data_lance = data['data_lance'],
         id_usuario = data['id_usuario'],
         id_produto = data['id_produto']
     )
