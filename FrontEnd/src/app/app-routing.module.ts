@@ -6,13 +6,14 @@ import { CadastroProdutosComponent } from './cadastro-produtos/cadastro-produtos
 import { LancesComponent } from './lances/lances.component';
 import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { PagamentosComponent } from './pagamentos/pagamentos.component';
 import { ComunidadeComponent } from './comunidades/comunidade/comunidade.component';
 import { ComunidadesComponent } from './comunidades/comunidades.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
   {
-    path: 'usuario',
+    path: '',
     component: CadastroUserComponent,
   },
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
     component: AvaliacoesComponent,
   },
   { path: 'usuarios', component: UsuariosComponent },
+  {path: 'pagamentos', component: PagamentosComponent},
 
   { path: 'comunidades', component: ComunidadesComponent },
 ];

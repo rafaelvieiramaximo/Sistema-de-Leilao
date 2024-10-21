@@ -102,6 +102,21 @@ def get_pagamentos():
     pagamentos = Pagamento.query.all()
     return jsonify([p.to_dict() for p in pagamentos])
 
+@routes.route('/pagamento', methods=['POST'])
+def create_pagamento():
+    data = request.get_json()
+    new_payment = Pagamento(
+        id_usuario=data['id_usuario'],
+        id_produto=data['id_produto'],
+        valor_total=data['valor_total'],
+        forma_pagamento=data['forma_pagamento'],
+        status=data['status']
+    )
+    db.session.add(new_payment)
+    db.session.commit()
+    return jsonify(new_payment.to_dict()), 201
+
+
 #Rotas para fretes
 @routes.route('/fretes', methods=['GET'])
 def get_fretes():
