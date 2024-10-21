@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Comunidade {
-  id: number;
+  id_comunidade: number;
   nome: string;
-  descricao: string;
 }
 
 @Injectable({

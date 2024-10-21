@@ -9,7 +9,6 @@ import { Usuario } from '../../services/usuario.service';
 })
 export class ComunidadeComponent {
   @Input() comunidade!: Comunidade;
-  @Input() usuario!: Usuario;
 
    constructor( private comunidadeService: ComunidadeService) {}
 
