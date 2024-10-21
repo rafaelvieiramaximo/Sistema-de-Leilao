@@ -120,6 +120,26 @@ def get_lances():
     lances = Lance.query.all()
     return jsonify([l.to_dict() for l in lances])
 
+@routes.route('/lance/<int:id_produto>', methods=['GET'])
+def get_lance_pr_id(id_produto):
+    lances = Lance.query.filter_by(id_produto=id_produto).all()
+    if lances:
+        return jsonify([lance.to_dict() for lance in lances])
+    return jsonify({'message': 'Lance nao encontrado'}), 404
+
+@routes.route('/lance', methods=['POST'])
+def postar_lance():
+    data = request.get_json()
+    new_lance = Lance(
+        valor = data['valor'],
+        data = data['data'],
+        id_usuario = data['id_usuario'],
+        id_produto = data['id_produto']
+    )
+    db.session.add(new_lance)
+    db.session.commit()
+    return jsonify(new_lance.to_dict()), 201
+
 #Rotas para avaliações
 @routes.route('/avaliacoes', methods=['GET'])
 def get_avaliacoes():
