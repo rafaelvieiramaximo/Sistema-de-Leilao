@@ -6,6 +6,7 @@ import { CadastroProdutosComponent } from './cadastro-produtos/cadastro-produtos
 import { LancesComponent } from './lances/lances.component';
 import { AvaliacoesComponent } from './avaliacoes/avaliacoes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { PagamentosComponent } from './pagamentos/pagamentos.component';
 
 const routes: Routes = [
   { path: 'usuario', component: CadastroUserComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     component: AvaliacoesComponent,
   },
   { path: 'usuarios', component: UsuariosComponent },
+  {path: 'pagamentos', component: PagamentosComponent}
 ];
 
 @NgModule({
