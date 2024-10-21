@@ -1,14 +1,8 @@
 <div class="interface-lances">
   <app-produto></app-produto>
 
-  <!--
-        Pensar em um jeito de remover o componente interações
-        aqui do componente avaliações
-    -->
-
   <div class="lista-lances">
-    <app-lance></app-lance>
-    <app-lance></app-lance>
+    <app-lance *ngFor="let lan of lancesProduto" [lance]="lan"></app-lance>
   </div>
 
   <div class="bottom">

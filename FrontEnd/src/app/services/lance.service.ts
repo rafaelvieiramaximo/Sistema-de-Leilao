@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 export interface Lance {
   id: number;
-  valor: number;
+  valor_lance: number;
   id_usuario: number;
   id_produto: number;
   data: string; // Pode ser ajustado para Date, dependendo do uso
