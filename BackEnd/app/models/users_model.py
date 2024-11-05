@@ -1,15 +1,13 @@
-#Aqui você define as "tabelas" do banco de dados usando a biblioteca SQLAlchemy.
-from __init__ import db
-from mongoengine import Document, StringField, FloatField, IntField, ListField, ReferenceField
-from models import Produto
+from mongoengine import Document, StringField, IntField, ListField, ReferenceField
 
-#Modulação da Tabela Usuario
-class Usuario(db.Document):
-    id_usuario = db.IntField(required=True)
-    nome = db.StringField(required=True)
-    email = db.StringField(required=True)
-    senha = db.StringField(required=True)
-    reputacao = db.StringField(required=True)
-    produtos = ListField(ReferenceField(Produto))
+# Modulação da Tabela Usuario
+class Usuario(Document):
+    id_usuario = IntField(required=True)
+    nome = StringField(required=True)
+    email = StringField(required=True)
+    senha = StringField(required=True)
+    reputacao = StringField(required=True)
+    produtos = ListField(ReferenceField('Produto'))
+    pagamentos = ListField(ReferenceField('Pagamento'))
 
     meta = {'collection': 'usuarios'}
