@@ -13,12 +13,7 @@ def create_app():
 
     # Configuração do MongoDB usando MongoEngine
     app.config['MONGODB_SETTINGS'] = {
-        'db': os.getenv('DB_NAME'),        # Nome do banco de dados
-        'host': os.getenv('DB_HOST'),      # Endereço do servidor MongoDB
-        'port': int(os.getenv('DB_PORT')), # Porta do MongoDB
-        'username': os.getenv('DB_USER'),  # Usuário do banco, se aplicável
-        'password': os.getenv('DB_PASS'),  # Senha do banco, se aplicável
-        'authentication_source': 'admin'   # Fonte de autenticação, se necessária
+        'url': os.getenv('DB_KEY') 
     }
 
     db.init_app(app)

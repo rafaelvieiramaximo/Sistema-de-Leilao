@@ -1,22 +1,13 @@
-from app import db
-
+from __init__ import db
+from mongoengine import Document, StringField, FloatField, IntField, DateField, ReferenceField
 
 #Modulação da Tabela do Produto
-class Produto(db.Model):
-    __tablename__ = 'produtos'
-    id_produto = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(255), nullable=False)
-    descricao = db.Column(db.Text)
-    preco_inicial = db.Column(db.Float, nullable=False)
-    data_inicial = db.Column(db.Date, nullable=False)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id_usuario'), nullable=False)
+class Produto(db.Document):
+    id_produto = IntField(primary_key=True, required=True)
+    nome = StringField(max_length=255, required=True)
+    descricao = StringField()
+    preco_inicial = FloatField(required=True)
+    data_inicial = DateField(required=True)
+    usuario = ReferenceField('Usuario', required=True)
 
-    def to_dict(self):
-        return {
-            'id_produto': self.id_produto,
-            'nome': self.nome,
-            'descricao': self.descricao,
-            'preco_inicial': self.preco_inicial,
-            'data_inicial': self.data_inicial,
-            'id_usuario': self.id_usuario
-        }
+    meta = {'collections': 'produtos'}

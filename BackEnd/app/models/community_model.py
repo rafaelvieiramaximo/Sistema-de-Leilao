@@ -1,15 +1,10 @@
 from app import db
+from mongoengine import Document, StringField, IntField, ReferenceField
 
 #Modulação da Tabela Comunidade
-class Comunidade(db.Model):
-    __tablename__ = 'comunidade'
-    id_comunidade = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(255), nullable=False)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id_usuario'), nullable=False)
+class Comunidade(Document):
+    id_comunidade = IntField(primary_key=True, required=True)
+    nome = StringField(max_length=255, required=True)
+    usuario = ReferenceField('Usuario', required=True)
 
-    def to_dict(self):
-        return {
-            'id_comunidade': self.id_comunidade,
-            'nome': self.nome,
-            'id_usuario': self.id_usuario
-        }
+    meta = {'collection': 'comunidade'}

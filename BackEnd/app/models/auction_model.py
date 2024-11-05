@@ -1,19 +1,11 @@
-from app import db
-
+from __init__ import db
+from mongoengine import Document, FloatField, DateField, IntField, ReferenceField
 #Modulação da Tabela Lances
-class Lance(db.Model):
-    __tablename__ = 'lances'
-    id_lance = db.Column(db.Integer, primary_key=True)
-    valor_lance = db.Column(db.Float, nullable=False)
-    data_lance = db.Column(db.Date, nullable=False)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id_usuario'), nullable=False)
-    id_produto = db.Column(db.Integer, db.ForeignKey('produtos.id_produto'), nullable=False)
+class Lance(Document):
+    id_lance = IntField(primary_key=True, required=True)
+    valor_lance = FloatField(required=True)
+    data_lance = DateField(required=True)
+    usuario = ReferenceField('Usuario', required=True)
+    produto = ReferenceField('Produto', required=True)
 
-    def to_dict(self):
-        return {
-            'id_lance': self.id_lance,
-            'valor_lance': self.valor_lance,
-            'data_lance': self.data_lance,
-            'id_usuario': self.id_usuario,
-            'id_produto': self.id_produto
-        }
+    meta = {'collection': 'lances'}

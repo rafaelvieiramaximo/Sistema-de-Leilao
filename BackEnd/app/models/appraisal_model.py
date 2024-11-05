@@ -1,19 +1,12 @@
 from app import db
-
+from mongoengine import Document, StringField, IntField, ReferenceField, DateField, DateTimeField
 #Modulação da tabela Avaliações
-class Avaliacao(db.Model):
-    __tablename__ = 'avaliacoes'
-    id_avaliacao = db.Column(db.Integer, primary_key=True)
-    texto = db.Column(db.Text, nullable=False)
-    data = db.Column(db.Date, nullable=False)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id_usuario'), nullable=False)
-    id_produto = db.Column(db.Integer, db.ForeignKey('produtos.id_produto'), nullable=False)
+class Avaliacao(Document):
+    id_avaliacao = IntField(primary_key=True, required=True)
+    texto = StringField(required=True)
+    data = DateField(required=True)
+    usuario = ReferenceField('Usuario', required=True)
+    produto = ReferenceField('Produto', required=True)
 
-    def to_dict(self):
-        return {
-            'id_avaliacao': self.id_avaliacao,
-            'texto': self.texto,
-            'data': self.data,
-            'id_usuario': self.id_usuario,
-            'id_produto': self.id_produto
-        }
+    meta = {'collection': 'avaliacoes'}
+    

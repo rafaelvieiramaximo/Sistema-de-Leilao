@@ -1,21 +1,13 @@
-from app import db
+from __init__ import db
+from mongoengine import Document, StringField, FloatField, IntField, ReferenceField
 
 #Modulação da Tabela Pagamentos
-class Pagamento(db.Model):
-    __tablename__ = 'pagamentos'
-    id_pagamento = db.Column(db.Integer, primary_key=True)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id_usuario'), nullable=False)
-    id_produto = db.Column(db.Integer, db.ForeignKey('produtos.id_produto'), nullable=False)
-    valor_total = db.Column(db.Float, nullable=False)
-    forma_pagamento = db.Column(db.String(255), nullable=False)
-    status = db.Column(db.String(255), nullable=False)
+class Pagamento(db.Document):
+    id_pagamento = IntField(primary_key=True, required=True)
+    usuario = ReferenceField('Usuario', required=True)
+    produto = ReferenceField('Produto', required=True)
+    valor_total = FloatField(required=True)
+    forma_pagamento = StringField(max_length=255, required=True)
+    status = StringField(max_length=255, required=True)
 
-    def to_dict(self):
-        return {
-            'id_pagamento': self.id_pagamento,
-            'id_usuario': self.id_usuario,
-            'id_produto': self.id_produto,
-            'valor_total': self.valor_total,
-            'forma_pagamento': self.forma_pagamento,
-            'status': self.status
-        }
+    meta = {'collection': 'pagamento'}
