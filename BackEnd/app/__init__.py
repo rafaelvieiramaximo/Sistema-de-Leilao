@@ -1,34 +1,37 @@
-#Aqui você inicia o Flask e define configurações básicas, como o banco de dados.
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+
+from flask_restful import Api    
 from dotenv import load_dotenv
-from flask_cors import CORS  # Importa o CORS   
+from flask_cors import CORS
+from app.routers.users_routes import Users, User
+from app.db import db
+
 import os
 
-
-
-load_dotenv()  # Carrega variáveis de ambiente do.env
-
-
-db = SQLAlchemy()
+load_dotenv()  # Carrega variáveis de ambiente do arquivo .env
 
 
 def create_app():
     app = Flask(__name__)
 
+    api = Api(app)  # Configuração do API Restful
 
-    #Troca a url do BD pela variavel DB_KEY se utilizando as bibliotecas os e env.
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_KEY')  # Caminho do banco de dados
+    # Configuração do MongoDB usando MongoEngine
+    app.config['MONGODB_SETTINGS'] = {
+        'host': os.getenv('DB_KEY') 
+    }
 
     db.init_app(app)
 
     CORS(app)  # Permite CORS para todas as rotas e origens
-    
-    # Cria todas as tabelas, respeitando a ordem de dependências
-    with app.app_context():
-        db.create_all()
 
-    from .routes import routes as routes_bp
-    app.register_blueprint(routes_bp)  # Registra as rotas definidas no arquivo routes.py
+    # Registro das rotas do aplicativo
+    api.add_resource(Users, '/usuarios')
+    api.add_resource(User, '/usuario', '/usuario/<string:id_usuario>')
+    #app.register_blueprint(routes)
 
     return app
+
+if __name__ == '__main__':
+    app = create_app()
+    app.run(debug=True)
