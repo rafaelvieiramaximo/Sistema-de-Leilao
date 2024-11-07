@@ -3,8 +3,7 @@ from flask import Flask
 from flask_restful import Api    
 from dotenv import load_dotenv
 from flask_cors import CORS
-from app.routes import routes
-from app.routers.users_routes import Users 
+from app.routers.users_routes import Users, User
 from app.db import db
 
 import os
@@ -27,8 +26,9 @@ def create_app():
     CORS(app)  # Permite CORS para todas as rotas e origens
 
     # Registro das rotas do aplicativo
-    api.add_resource(Users, '/users')
-    app.register_blueprint(routes)
+    api.add_resource(Users, '/usuarios')
+    api.add_resource(User, '/usuario', '/usuario/<string:id_usuario>')
+    #app.register_blueprint(routes)
 
     return app
 
