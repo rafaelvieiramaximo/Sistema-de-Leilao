@@ -23,7 +23,8 @@ routes = Blueprint('/', __name__)
 @routes.route('/usuarios', methods=['GET'])
 def get_usuarios():
     usuarios = Usuario.objects.all()
-    return jsonify([u.to_dict() for u in usuarios])
+    return jsonify([u.to_dict() for u in usuarios]), 201
+
 
 @routes.route('/usuario/<int:id>', methods=['GET'])
 def get_usuarios_id(id):
