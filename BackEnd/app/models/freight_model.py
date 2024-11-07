@@ -1,4 +1,3 @@
-from __init__ import db
 from mongoengine import Document, StringField, FloatField, IntField, ReferenceField
 #Modulção da Tabela Frete
 class Frete(Document):

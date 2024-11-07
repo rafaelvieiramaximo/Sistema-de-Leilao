@@ -1,8 +1,7 @@
-from __init__ import db
 from mongoengine import Document, StringField, FloatField, IntField, DateField, ReferenceField
 
 #Modulação da Tabela do Produto
-class Produto(db.Document):
+class Produto(Document):
     id_produto = IntField(primary_key=True, required=True)
     nome = StringField(max_length=255, required=True)
     descricao = StringField()

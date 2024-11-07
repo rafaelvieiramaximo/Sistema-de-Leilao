@@ -1,4 +1,3 @@
-from __init__ import db
 from mongoengine import Document, StringField, IntField, ReferenceField
 
 #Modulação da Tabela Comunidade

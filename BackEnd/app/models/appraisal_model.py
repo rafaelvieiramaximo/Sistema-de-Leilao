@@ -1,4 +1,3 @@
-from __init__ import db
 from mongoengine import Document, StringField, IntField, ReferenceField, DateField, DateTimeField
 #Modulação da tabela Avaliações
 class Avaliacao(Document):

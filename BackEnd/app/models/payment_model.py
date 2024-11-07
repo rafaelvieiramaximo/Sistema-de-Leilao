@@ -1,8 +1,7 @@
-from __init__ import db
 from mongoengine import Document, StringField, FloatField, IntField, ReferenceField
 
 #Modulação da Tabela Pagamentos
-class Pagamento(db.Document):
+class Pagamento(Document):
     id_pagamento = IntField(primary_key=True, required=True)
     usuario = ReferenceField('Usuario', required=True)
     produto = ReferenceField('Produto', required=True)

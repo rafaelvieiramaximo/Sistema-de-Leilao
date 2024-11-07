@@ -1,4 +1,3 @@
-from __init__ import db
 from mongoengine import Document, FloatField, DateField, IntField, ReferenceField
 #Modulação da Tabela Lances
 class Lance(Document):

@@ -2,16 +2,15 @@
 # como /produtos, /usuarios, etc.
 
 from flask import Blueprint, jsonify, request
-from models.users_model import Usuario
-from models.product_model import Produto
-from models.auction_model import Lance
-from models.payment_model import Pagamento
-from models.freight_model import Frete
-from models.appraisal_model import Avaliacao
-from models.community_model import Comunidade
+from app.models.users_model import Usuario
+from app.models.product_model import Produto
+from app.models.auction_model import Lance
+from app.models.payment_model import Pagamento
+from app.models.freight_model import Frete
+from app.models.appraisal_model import Avaliacao
+from app.models.community_model import Comunidade
     
-from __init__ import db
-
+from app.db import db
 
 routes = Blueprint('/', __name__)
 
