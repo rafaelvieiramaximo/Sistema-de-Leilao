@@ -20,9 +20,6 @@ routes = Blueprint('/', __name__)
 
 #Rotas para usuários
 
-class Users(Resource):
-    def get(self):
-        return jsonify(Usuario.objects())
 
 # @routes.route('/usuarios', methods=['GET'])
 # def get_usuarios():

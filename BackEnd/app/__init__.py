@@ -1,10 +1,10 @@
 from flask import Flask
 
 from flask_restful import Api    
-from flask_mongoengine import MongoEngine
 from dotenv import load_dotenv
 from flask_cors import CORS
-from app.routes import routes, Users
+from app.routes import routes
+from app.routers.users_routes import Users 
 from app.db import db
 
 import os
