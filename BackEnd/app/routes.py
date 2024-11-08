@@ -2,6 +2,7 @@
 # como /produtos, /usuarios, etc.
 
 from flask import Blueprint, jsonify, request
+from flask_restful import Resource, reqparse
 from app.models.users_model import Usuario
 from app.models.product_model import Produto
 from app.models.auction_model import Lance
@@ -19,11 +20,10 @@ routes = Blueprint('/', __name__)
 
 #Rotas para usuários
 
-@routes.route('/usuarios', methods=['GET'])
-def get_usuarios():
-    usuarios = Usuario.objects.all()
-    return jsonify([u.to_dict() for u in usuarios]), 201
 
+# @routes.route('/usuarios', methods=['GET'])
+# def get_usuarios():
+#     return jsonify(Usuario.objects())
 
 @routes.route('/usuario/<int:id>', methods=['GET'])
 def get_usuarios_id(id):

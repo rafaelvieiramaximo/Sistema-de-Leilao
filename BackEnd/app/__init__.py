@@ -1,8 +1,9 @@
 from flask import Flask
-from flask_mongoengine import MongoEngine
+
+from flask_restful import Api    
 from dotenv import load_dotenv
 from flask_cors import CORS
-from app.routes import routes
+from app.routers.users_routes import Users, User
 from app.db import db
 
 import os
@@ -12,6 +13,8 @@ load_dotenv()  # Carrega variáveis de ambiente do arquivo .env
 
 def create_app():
     app = Flask(__name__)
+
+    api = Api(app)  # Configuração do API Restful
 
     # Configuração do MongoDB usando MongoEngine
     app.config['MONGODB_SETTINGS'] = {
@@ -23,7 +26,9 @@ def create_app():
     CORS(app)  # Permite CORS para todas as rotas e origens
 
     # Registro das rotas do aplicativo
-    app.register_blueprint(routes)
+    api.add_resource(Users, '/usuarios')
+    api.add_resource(User, '/usuario', '/usuario/<string:id_usuario>')
+    #app.register_blueprint(routes)
 
     return app
 

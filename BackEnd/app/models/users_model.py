@@ -1,8 +1,9 @@
 from mongoengine import Document, StringField, IntField, ListField, ReferenceField
+import uuid
 
 # Modulação da Tabela Usuario
 class Usuario(Document):
-    id_usuario = IntField(required=True)
+    id_usuario = StringField(required=True, default=lambda: str(uuid.uuid4()), unique=True)
     nome = StringField(required=True)
     email = StringField(required=True)
     senha = StringField(required=True)
