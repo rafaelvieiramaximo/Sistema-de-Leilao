@@ -7,6 +7,6 @@ class Produto(Document):
     descricao = StringField()
     preco_inicial = FloatField(required=True)
     data_inicial = DateField(required=True)
-    usuario = ReferenceField('Usuario', required=True)
+    id_usuario = ReferenceField('Usuario', required=True)
 
-    meta = {'collections': 'produtos'}
+    meta = {'collections': 'Produtos'}
