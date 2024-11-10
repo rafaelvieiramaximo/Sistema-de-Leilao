@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
-from app.models.product_model import Produto
+from app.models.product_model import Produto_Model
+from app.models.users_model import Usuario_Model
 from mongoengine import DoesNotExist, ValidationError
 from bson import ObjectId
 from flask import jsonify
@@ -39,6 +40,10 @@ _produto_parser.add_argument('id_usuario',
                              type=str,
                              required=True, 
                              help="Id do Usuário não pode estar em branco")
+_produto_parser.add_argument('id_categoria', 
+                             type=str,
+                             required=True, 
+                             help="Id do Usuário não pode estar em branco")
 
 
 
@@ -55,7 +60,7 @@ class Produtos(Resource):
         Returns:
             json: Lista de produtos.
         """
-        produtos = Produtos.objects.all()
+        produtos = Produto_Model.objects.all()
         produtos_list = [serialize_object_id(produto.to_mongo().to_dict()) for produto in produtos]
         return jsonify(produtos_list)
     
@@ -65,7 +70,7 @@ class Produto(Resource):
     def get(self, id_produto):
 
         try:
-            produto = Produto.objects.get(id=id_produto)
+            produto = Produto_Model.objects.get(id=id_produto)
             produto_data = (serialize_object_id(produto.to_mongo().to_dict()))
             return jsonify(produto_data)
         except DoesNotExist:
@@ -76,9 +81,27 @@ class Produto(Resource):
     def post(self):
         data = _produto_parser.parse_args()
         try:
-            novo_produto = Produto(**data).save()
-            return ({"message": "Produto %s criado com sucesso!" % novo_produto.id}), 201
+            # Verificar se o usuário existe
+            usuario = Usuario_Model.objects.get(id_usuario=data['id_usuario'])
+            if not usuario:
+                return jsonify({"error": "Usuário não encontrado"}), 404
+
+            # Criar o novo produto associado ao usuário
+            novo_produto = Produto_Model(
+                id_produto=data['id_produto'],
+                nome=data['nome'],
+                descricao=data['descricao'],
+                preco_inicial=data['preco_inicial'],
+                data_inicial=data['data_inicial'],
+                id_usuario=usuario  # Associação com o usuário
+            )
+            novo_produto.save()
+
+            return jsonify({"message": f"Produto {novo_produto.id_produto} criado com sucesso!"}), 201
+
+        except DoesNotExist:
+            return jsonify({"error": "Usuário não encontrado"}), 404
         except ValidationError as e:
-            return ({"error": str(e)}), 400
+            return jsonify({"error": str(e)}), 400
         except Exception as e:
-            return ({"error": str(e)}), 500
+            return jsonify({"error": str(e)}), 500

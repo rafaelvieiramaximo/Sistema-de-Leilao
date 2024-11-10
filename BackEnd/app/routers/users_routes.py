@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-from app.models.users_model import Usuario
+from app.models.users_model import Usuario_Model
 from mongoengine import DoesNotExist, ValidationError
 from bson import ObjectId
 from flask import jsonify
@@ -56,7 +56,7 @@ class Users(Resource):
         Returns:
             json: Lista de usuários.
         """
-        usuarios = Usuario.objects.all()  # Consulta no MongoDB
+        usuarios = Usuario_Model.objects.all()  # Consulta no MongoDB
         # Usa o método `to_mongo()` para converter o objeto em um dicionário e depois aplica a função de serialização
         usuarios_list = [serialize_object_id(usuario.to_mongo().to_dict()) for usuario in usuarios]
         return jsonify(usuarios_list)
@@ -71,7 +71,7 @@ class Users(Resource):
             json: Mensagem de sucesso ou erro.
         """
         try:
-            Usuario.objects.delete()  
+            Usuario_Model.objects.delete()  
             return ({"message": "Todos os usuários foram deletados com sucesso"}), 200
         except Exception as e:
             return ({"error": str(e)}), 500  
@@ -90,7 +90,7 @@ class User(Resource):
             json: O usuário encontrado ou uma mensagem de erro.
         """
         try:
-            usuario = Usuario.objects.get(id=id_usuario)
+            usuario = Usuario_Model.objects.get(id=id_usuario)
             usuario_data = serialize_object_id(usuario.to_mongo().to_dict())  # Aplica a função de serialização
             return (usuario_data), 200
         except DoesNotExist:
@@ -109,7 +109,7 @@ class User(Resource):
         """
         data = _usuario_parser.parse_args()
         try:
-            novo_usuario = Usuario(**data).save()      
+            novo_usuario = Usuario_Model(**data).save()      
             return {"message": "Usuário %s criado com sucesso!" % novo_usuario.id}, 201
         except ValidationError as e:
             return ({"error": str(e)}), 400
@@ -130,7 +130,7 @@ class User(Resource):
         """
         data = _usuario_parser.parse_args()
         try:
-            usuario = Usuario.objects.get(id=id_usuario)
+            usuario = Usuario_Model.objects.get(id=id_usuario)
             usuario.update(**data)  # Atualiza os campos com os dados fornecidos
             usuario.reload()  # Recarrega o documento atualizado
             return ({"message": "Usuário atualizado com sucesso"}), 200
@@ -152,7 +152,7 @@ class User(Resource):
             json: Mensagem de sucesso ou erro.
         """
         try: 
-            usuario = Usuario.objects.get(id=id_usuario)
+            usuario = Usuario_Model.objects.get(id=id_usuario)
             usuario.delete()
             return ({"message": "Usuário deletado com sucesso"}), 200
         except DoesNotExist:
