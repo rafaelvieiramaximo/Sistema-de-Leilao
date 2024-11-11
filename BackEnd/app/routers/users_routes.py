@@ -6,14 +6,20 @@ from flask import jsonify
 
 
 # Função para serializar ObjectId
+# Função para serializar ObjectId e substituir _id por id_usuario
 def serialize_object_id(data):
     if isinstance(data, dict):
-        return {key: serialize_object_id(value) for key, value in data.items()}
+        new_data = {key: serialize_object_id(value) for key, value in data.items()}
+        # Substituir `_id` por `id_usuario`
+        if '_id' in new_data:
+            new_data['id_usuario'] = str(new_data.pop('_id'))
+        return new_data
     elif isinstance(data, list):
         return [serialize_object_id(item) for item in data]
     elif isinstance(data, ObjectId):
         return str(data)
     return data
+    
 
 # Parser para os campos de entrada do usuário
 _usuario_parser = reqparse.RequestParser()
