@@ -5,6 +5,7 @@ from mongoengine import DoesNotExist, ValidationError
 from bson import ObjectId
 from flask import jsonify
 
+
 def serialize_object_id(data):
     if isinstance(data, dict):
         return {key: serialize_object_id(value) for key, value in data.items()}
@@ -14,45 +15,44 @@ def serialize_object_id(data):
         return str(data)
     return data
 
-""""Função para campos de entrada de produto"""
+
+# Função para campos de entrada de produto
 _produto_parser = reqparse.RequestParser()
 _produto_parser.add_argument('id_produto',
-                              type=int,
-                              required=True,
-                              help="ID do produto não pode estar em branco")
+                             type=int,
+                             required=True,
+                             help="ID do produto não pode estar em branco")
 _produto_parser.add_argument('nome',
-                              type=str, 
-                              required=True,
-                              help="Nome do produto não pode estar em branco")
+                             type=str,
+                             required=True,
+                             help="Nome do produto não pode estar em branco")
 _produto_parser.add_argument('descricao',
                              type=str,
-                             required=True, 
-                             help="Descricao do produto não pode estar em branco")
-_produto_parser.add_argument('preco_inicial', 
-                             type=float, 
-                             required=True, 
+                             required=True,
+                             help="Descrição do produto não pode estar em branco")
+_produto_parser.add_argument('preco_inicial',
+                             type=float,
+                             required=True,
                              help="Preço inicial não pode estar em branco")
-_produto_parser.add_argument('data_inicial', 
+_produto_parser.add_argument('data_inicial',
                              type=str,
-                             required=True, 
+                             required=True,
                              help="Data inicial não pode estar em branco")
-_produto_parser.add_argument('id_usuario', 
+_produto_parser.add_argument('id_usuario',
                              type=str,
-                             required=True, 
-                             help="Id do Usuário não pode estar em branco")
-_produto_parser.add_argument('id_categoria', 
+                             required=True,
+                             help="ID do Usuário não pode estar em branco")
+_produto_parser.add_argument('id_categoria',
                              type=str,
-                             required=True, 
-                             help="Id do Usuário não pode estar em branco")
+                             required=True,
+                             help="ID da Categoria não pode estar em branco")
 
 
-
-class Produtos(Resource): 
+class Produtos(Resource):
     """Recurso para operações em múltiplos produtos."""
 
     def get(self):
         """
-
         Listar todos os produtos.
 
         Retorna uma lista de todos os produtos no banco de dados.
@@ -60,25 +60,34 @@ class Produtos(Resource):
         Returns:
             json: Lista de produtos.
         """
-        produtos = Produto_Model.objects.all()
-        produtos_list = [serialize_object_id(produto.to_mongo().to_dict()) for produto in produtos]
-        return jsonify(produtos_list)
-    
+        try:
+            produtos = Produto_Model.objects.all()
+            produtos_list = [serialize_object_id(produto.to_mongo().to_dict()) for produto in produtos]
+            return jsonify(produtos_list)
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+
 class Produto(Resource):
     """Recurso para Operações em Produtos únicos"""
 
     def get(self, id_produto):
-
+        """
+        Obter um produto pelo ID.
+        """
         try:
             produto = Produto_Model.objects.get(id=id_produto)
-            produto_data = (serialize_object_id(produto.to_mongo().to_dict()))
+            produto_data = serialize_object_id(produto.to_mongo().to_dict())
             return jsonify(produto_data)
         except DoesNotExist:
             return jsonify({"error": "Produto não encontrado"}), 404
         except Exception as e:
             return jsonify({"error": str(e)}), 500
-    
+
     def post(self):
+        """
+        Criar um novo produto.
+        """
         data = _produto_parser.parse_args()
         try:
             # Verificar se o usuário existe
@@ -93,7 +102,8 @@ class Produto(Resource):
                 descricao=data['descricao'],
                 preco_inicial=data['preco_inicial'],
                 data_inicial=data['data_inicial'],
-                id_usuario=usuario  # Associação com o usuário
+                id_usuario=usuario,  # Associação com o usuário
+                id_categoria=data['id_categoria']
             )
             novo_produto.save()
 
@@ -103,5 +113,45 @@ class Produto(Resource):
             return jsonify({"error": "Usuário não encontrado"}), 404
         except ValidationError as e:
             return jsonify({"error": str(e)}), 400
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    def put(self, id_produto):
+        """
+        Atualizar um produto existente pelo ID.
+        """
+        data = _produto_parser.parse_args()
+        try:
+            # Verificar se o produto existe
+            produto = Produto_Model.objects.get(id=id_produto)
+
+            # Atualizar os campos do produto
+            produto.update(
+                nome=data['nome'],
+                descricao=data['descricao'],
+                preco_inicial=data['preco_inicial'],
+                data_inicial=data['data_inicial'],
+                id_categoria=data['id_categoria']
+            )
+
+            return jsonify({"message": f"Produto {id_produto} atualizado com sucesso!"}), 200
+
+        except DoesNotExist:
+            return jsonify({"error": "Produto não encontrado"}), 404
+        except ValidationError as e:
+            return jsonify({"error": str(e)}), 400
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    def delete(self, id_produto):
+        """
+        Deletar um produto pelo ID.
+        """
+        try:
+            produto = Produto_Model.objects.get(id=id_produto)
+            produto.delete()
+            return jsonify({"message": f"Produto {id_produto} deletado com sucesso!"}), 200
+        except DoesNotExist:
+            return jsonify({"error": "Produto não encontrado"}), 404
         except Exception as e:
             return jsonify({"error": str(e)}), 500
