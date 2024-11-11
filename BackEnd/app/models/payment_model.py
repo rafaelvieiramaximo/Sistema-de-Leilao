@@ -11,4 +11,4 @@ class Pagamento_Model(Document):
     forma_pagamento = StringField(max_length=255, required=True)
     status = StringField(max_length=255, required=True)
 
-    meta = {'collection': 'pagamento'}
+    meta = {'collection': 'Pagamentos'}
