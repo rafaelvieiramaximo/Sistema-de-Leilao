@@ -4,6 +4,7 @@ from flask_restful import Api
 from dotenv import load_dotenv
 from flask_cors import CORS
 from app.routers.users_routes import Users, User
+from app.routers.product_routes import Produto, Produtos
 from app.db import db
 
 import os
@@ -28,6 +29,8 @@ def create_app():
     # Registro das rotas do aplicativo
     api.add_resource(Users, '/usuarios')
     api.add_resource(User, '/usuario', '/usuario/<string:id_usuario>')
+    api.add_resource(Produtos, '/produtos')
+    api.add_resource(Produto, '/produto', '/produto/<int:id_produto>')
     #app.register_blueprint(routes)
 
     return app
