@@ -23,7 +23,7 @@ class Pagamentos(Resource):
         Retorna uma lista de todos os pagamentos no banco de dados.
 
         Returns:
-            json: Lista de pagamentos.
+            json: Lista de pagamentos legal.
         """
         try:
             pagamentos = Pagamento_Model.objects.all()
