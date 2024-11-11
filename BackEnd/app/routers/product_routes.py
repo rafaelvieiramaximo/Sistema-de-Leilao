@@ -3,11 +3,20 @@ from app.models.product_model import Produto_Model
 from app.models.users_model import Usuario_Model
 from mongoengine import DoesNotExist, ValidationError
 from bson import ObjectId
+import uuid
 from flask import jsonify
 
 
 def serialize_object_id(data):
+    """
+    Função para serializar ObjectId para string e lidar com listas ou dicionários,
+    renomeando o campo `_id` para `id_produto`.
+    """
     if isinstance(data, dict):
+        # Se o dicionário contiver o campo _id, substitua por id_produto
+        if '_id' in data:
+            data['id_produto'] = str(data.pop('_id'))
+        # Recursivamente processa todos os outros campos
         return {key: serialize_object_id(value) for key, value in data.items()}
     elif isinstance(data, list):
         return [serialize_object_id(item) for item in data]
@@ -16,12 +25,9 @@ def serialize_object_id(data):
     return data
 
 
+
 # Função para campos de entrada de produto
 _produto_parser = reqparse.RequestParser()
-_produto_parser.add_argument('id_produto',
-                             type=int,
-                             required=True,
-                             help="ID do produto não pode estar em branco")
 _produto_parser.add_argument('nome',
                              type=str,
                              required=True,
@@ -97,7 +103,7 @@ class Produto(Resource):
 
             # Criar o novo produto associado ao usuário
             novo_produto = Produto_Model(
-                id_produto=data['id_produto'],
+                id_produto=uuid.uuid4(),
                 nome=data['nome'],
                 descricao=data['descricao'],
                 preco_inicial=data['preco_inicial'],
@@ -107,7 +113,8 @@ class Produto(Resource):
             )
             novo_produto.save()
 
-            return jsonify({"message": f"Produto {novo_produto.id_produto} criado com sucesso!"}), 201
+            # Ensure that the UUID is serializable
+            return jsonify({"message": f"Produto {str(novo_produto.id_produto)} criado com sucesso!"}), 201
 
         except DoesNotExist:
             return jsonify({"error": "Usuário não encontrado"}), 404

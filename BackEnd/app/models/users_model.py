@@ -12,4 +12,4 @@ class Usuario_Model(Document):
     pagamentos = ListField(ReferenceField('Pagamento'))
     comunidade = ListField(ReferenceField('Comunidade'))   
 
-    meta = {'collection': 'usuarios'}
+    meta = {'collection': 'Usuarios'}
