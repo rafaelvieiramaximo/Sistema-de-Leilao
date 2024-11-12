@@ -31,9 +31,9 @@ def create_app():
     api.add_resource(Users, '/usuarios')
     api.add_resource(User, '/usuario', '/usuario/<string:id_usuario>')
     api.add_resource(Produtos, '/produtos')
-    api.add_resource(Produto, '/produto', '/produto/<int:id_produto>')
+    api.add_resource(Produto, '/produto', '/produto/<string:id_produto>')
     api.add_resource(Pagamentos, '/pagamentos')
-    api.add_resource(Pagamento, '/pagamento', '/pagamento/<int:id_pagamento>')
+    api.add_resource(Pagamento, '/pagamento', '/pagamento/<string:id_pagamento>')
     #app.register_blueprint(routes)
 
     return app

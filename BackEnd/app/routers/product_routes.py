@@ -32,6 +32,21 @@ class Produtos(Resource):
             return make_response(jsonify(produtos_list), 200)
         except Exception as e:
             return make_response(jsonify({"error": str(e)}), 500)
+    
+    def delete(self):
+        """
+        Deletar todos os usuários.
+
+        Remove todos os documentos de usuário do banco de dados.
+        
+        Returns:
+            json: Mensagem de sucesso ou erro.
+        """
+        try:
+            Produto_Model.objects.delete()  
+            return ({"message": "Todos os produtos foram deletados com sucesso"}), 200
+        except Exception as e:
+            return ({"error": str(e)}), 500  
 
 class Produto(Resource):
     def get(self, id_produto):
@@ -43,6 +58,8 @@ class Produto(Resource):
             return make_response(jsonify({"error": "Produto não encontrado"}), 404)
         except Exception as e:
             return make_response(jsonify({"error": str(e)}), 500)
+    
+    
 
     def post(self):
         data = _produto_parser.parse_args()

@@ -11,4 +11,4 @@ class Produto_Model(Document):
     id_categoria = StringField(required=True)
     id_usuario = ReferenceField(Usuario_Model, required=True)
 
-    meta = {'collection': 'produtos'}
+    meta = {'collection': 'Produtos'}
