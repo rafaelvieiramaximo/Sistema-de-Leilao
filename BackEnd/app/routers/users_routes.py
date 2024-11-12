@@ -23,32 +23,23 @@ def serialize_object_id(data):
 
 # Parser para os campos de entrada do usuário
 _usuario_parser = reqparse.RequestParser()
-_usuario_parser.add_argument('nome',
-                             type=str,
-                             required=True,
+_usuario_parser.add_argument('nome', 
+                             type=str, 
+                             required=True, 
                              help="Nome do usuário não pode estar em branco")
-_usuario_parser.add_argument('email',
-                             type=str,
-                             required=True,
+_usuario_parser.add_argument('email', 
+                             type=str, 
+                             required=True, 
                              help="Email do usuário não pode estar em branco")
-_usuario_parser.add_argument('senha',
-                             type=str,
-                             required=True,
+_usuario_parser.add_argument('senha', 
+                             type=str, 
+                             required=True, 
                              help="Senha do usuário não pode estar em branco")
-_usuario_parser.add_argument('reputacao',
-                             type=str,
-                             required=False,
+_usuario_parser.add_argument('reputacao', 
+                             type=float, 
+                             required=False, 
                              help="Reputação do usuário")
-_usuario_parser.add_argument('produtos',
-                             type=list,
-                             location='json',
-                             required=False,
-                             help="Produtos devem ser uma lista de IDs de produtos")
-_usuario_parser.add_argument('pagamentos',
-                             type=list,
-                             location='json',
-                             required=False,
-                             help="Pagamentos devem ser uma lista de IDs de pagamentos")
+
 
 class Users(Resource):
     """Recurso para operações em múltiplos usuários."""
@@ -115,12 +106,13 @@ class User(Resource):
         """
         data = _usuario_parser.parse_args()
         try:
-            novo_usuario = Usuario_Model(**data).save()      
+            novo_usuario = Usuario_Model(**data).save()  # Não há necessidade de passar id_usuario
             return {"message": "Usuário %s criado com sucesso!" % novo_usuario.id}, 201
         except ValidationError as e:
             return ({"error": str(e)}), 400
         except Exception as e:
             return ({"error": str(e)}), 500
+
 
     def put(self, id_usuario):
         """

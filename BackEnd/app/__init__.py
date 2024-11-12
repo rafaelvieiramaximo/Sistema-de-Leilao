@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from flask_cors import CORS
 from app.routers.users_routes import Users, User
 from app.routers.product_routes import Produto, Produtos
-from app.routers.payment_routes import Pagamentos
+from app.routers.payment_routes import Pagamentos, Pagamento
 from app.db import db
 
 import os
@@ -31,8 +31,9 @@ def create_app():
     api.add_resource(Users, '/usuarios')
     api.add_resource(User, '/usuario', '/usuario/<string:id_usuario>')
     api.add_resource(Produtos, '/produtos')
-    api.add_resource(Produto, '/produto', '/produto/<int:id_produto>')
+    api.add_resource(Produto, '/produto', '/produto/<string:id_produto>')
     api.add_resource(Pagamentos, '/pagamentos')
+    api.add_resource(Pagamento, '/pagamento', '/pagamento/<string:id_pagamento>')
     #app.register_blueprint(routes)
 
     return app

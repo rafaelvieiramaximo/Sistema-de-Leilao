@@ -4,7 +4,6 @@ import uuid
     
 #Modulação da Tabela do Produto
 class Produto_Model(Document):
-    id_produto = UUIDField(primary_key=True, default=uuid.uuid4)
     nome = StringField(max_length=255, required=True)
     descricao = StringField()
     preco_inicial = FloatField(required=True)
