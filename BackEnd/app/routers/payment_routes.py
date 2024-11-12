@@ -50,25 +50,7 @@ class Pagamentos(Resource):
         except Exception as e:
             return jsonify({"error": str(e)}), 500
 
-    def post(self):
-        """
-        Criar um novo pagamento.
-
-        Returns:
-            json: Mensagem de sucesso com o ID do pagamento criado.
-        """
-        data = _pagamento_parser.parse_args()
-        # Convertendo os IDs para ObjectId
-        data['id_usuario'] = ObjectId(data['id_usuario'])
-        data['id_produto'] = ObjectId(data['id_produto'])
-        
-        try:
-            novo_pagamento = Pagamento_Model(**data).save()
-            return {"message": f"Pagamento {novo_pagamento.id} criado com sucesso!"}, 201
-        except ValidationError as e:
-            return {"error": str(e)}, 400
-        except Exception as e:
-            return {"error": str(e)}, 500
+    
 
 class Pagamento(Resource):
     """Recurso para operações em um pagamento específico."""
@@ -89,6 +71,26 @@ class Pagamento(Resource):
             return pagamento_data, 200
         except DoesNotExist:
             return {"error": "Pagamento não encontrado"}, 404
+        except Exception as e:
+            return {"error": str(e)}, 500
+        
+    def post(self):
+        """
+        Criar um novo pagamento.
+
+        Returns:
+            json: Mensagem de sucesso com o ID do pagamento criado.
+        """
+        data = _pagamento_parser.parse_args()
+        # Convertendo os IDs para ObjectId
+        data['id_usuario'] = ObjectId(data['id_usuario'])
+        data['id_produto'] = ObjectId(data['id_produto'])
+        
+        try:
+            novo_pagamento = Pagamento_Model(**data).save()
+            return {"message": f"Pagamento {novo_pagamento.id} criado com sucesso!"}, 201
+        except ValidationError as e:
+            return {"error": str(e)}, 400
         except Exception as e:
             return {"error": str(e)}, 500
 
