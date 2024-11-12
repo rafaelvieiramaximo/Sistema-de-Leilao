@@ -1,12 +1,14 @@
-from mongoengine import Document, StringField, FloatField, IntField, DateField, ReferenceField
-
+from mongoengine import Document, StringField, FloatField, IntField, DateField, ReferenceField, UUIDField
+from app.models.users_model import Usuario_Model
+import uuid
+    
 #Modulação da Tabela do Produto
-class Produto(Document):
-    id_produto = IntField(primary_key=True, required=True)
+class Produto_Model(Document):
     nome = StringField(max_length=255, required=True)
     descricao = StringField()
     preco_inicial = FloatField(required=True)
     data_inicial = DateField(required=True)
-    usuario = ReferenceField('Usuario', required=True)
+    id_categoria = StringField(required=True)
+    id_usuario = ReferenceField(Usuario_Model, required=True)
 
-    meta = {'collections': 'produtos'}
+    meta = {'collection': 'Produtos'}

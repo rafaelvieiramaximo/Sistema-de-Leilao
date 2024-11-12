@@ -1,48 +1,45 @@
 from flask_restful import Resource, reqparse
-from app.models.users_model import Usuario
+from app.models.users_model import Usuario_Model
 from mongoengine import DoesNotExist, ValidationError
 from bson import ObjectId
 from flask import jsonify
 
 
 # Função para serializar ObjectId
+# Função para serializar ObjectId e substituir _id por id_usuario
 def serialize_object_id(data):
     if isinstance(data, dict):
-        return {key: serialize_object_id(value) for key, value in data.items()}
+        new_data = {key: serialize_object_id(value) for key, value in data.items()}
+        # Substituir `_id` por `id_usuario`
+        if '_id' in new_data:
+            new_data['id_usuario'] = str(new_data.pop('_id'))
+        return new_data
     elif isinstance(data, list):
         return [serialize_object_id(item) for item in data]
     elif isinstance(data, ObjectId):
         return str(data)
     return data
+    
 
 # Parser para os campos de entrada do usuário
 _usuario_parser = reqparse.RequestParser()
-_usuario_parser.add_argument('nome',
-                             type=str,
-                             required=True,
+_usuario_parser.add_argument('nome', 
+                             type=str, 
+                             required=True, 
                              help="Nome do usuário não pode estar em branco")
-_usuario_parser.add_argument('email',
-                             type=str,
-                             required=True,
+_usuario_parser.add_argument('email', 
+                             type=str, 
+                             required=True, 
                              help="Email do usuário não pode estar em branco")
-_usuario_parser.add_argument('senha',
-                             type=str,
-                             required=True,
+_usuario_parser.add_argument('senha', 
+                             type=str, 
+                             required=True, 
                              help="Senha do usuário não pode estar em branco")
-_usuario_parser.add_argument('reputacao',
-                             type=str,
-                             required=False,
+_usuario_parser.add_argument('reputacao', 
+                             type=float, 
+                             required=False, 
                              help="Reputação do usuário")
-_usuario_parser.add_argument('produtos',
-                             type=list,
-                             location='json',
-                             required=False,
-                             help="Produtos devem ser uma lista de IDs de produtos")
-_usuario_parser.add_argument('pagamentos',
-                             type=list,
-                             location='json',
-                             required=False,
-                             help="Pagamentos devem ser uma lista de IDs de pagamentos")
+
 
 class Users(Resource):
     """Recurso para operações em múltiplos usuários."""
@@ -56,7 +53,7 @@ class Users(Resource):
         Returns:
             json: Lista de usuários.
         """
-        usuarios = Usuario.objects.all()  # Consulta no MongoDB
+        usuarios = Usuario_Model.objects.all()  # Consulta no MongoDB
         # Usa o método `to_mongo()` para converter o objeto em um dicionário e depois aplica a função de serialização
         usuarios_list = [serialize_object_id(usuario.to_mongo().to_dict()) for usuario in usuarios]
         return jsonify(usuarios_list)
@@ -71,7 +68,7 @@ class Users(Resource):
             json: Mensagem de sucesso ou erro.
         """
         try:
-            Usuario.objects.delete()  
+            Usuario_Model.objects.delete()  
             return ({"message": "Todos os usuários foram deletados com sucesso"}), 200
         except Exception as e:
             return ({"error": str(e)}), 500  
@@ -90,7 +87,7 @@ class User(Resource):
             json: O usuário encontrado ou uma mensagem de erro.
         """
         try:
-            usuario = Usuario.objects.get(id=id_usuario)
+            usuario = Usuario_Model.objects.get(id=id_usuario)
             usuario_data = serialize_object_id(usuario.to_mongo().to_dict())  # Aplica a função de serialização
             return (usuario_data), 200
         except DoesNotExist:
@@ -109,12 +106,13 @@ class User(Resource):
         """
         data = _usuario_parser.parse_args()
         try:
-            novo_usuario = Usuario(**data).save()      
+            novo_usuario = Usuario_Model(**data).save()  # Não há necessidade de passar id_usuario
             return {"message": "Usuário %s criado com sucesso!" % novo_usuario.id}, 201
         except ValidationError as e:
             return ({"error": str(e)}), 400
         except Exception as e:
             return ({"error": str(e)}), 500
+
 
     def put(self, id_usuario):
         """
@@ -130,7 +128,7 @@ class User(Resource):
         """
         data = _usuario_parser.parse_args()
         try:
-            usuario = Usuario.objects.get(id=id_usuario)
+            usuario = Usuario_Model.objects.get(id=id_usuario)
             usuario.update(**data)  # Atualiza os campos com os dados fornecidos
             usuario.reload()  # Recarrega o documento atualizado
             return ({"message": "Usuário atualizado com sucesso"}), 200
@@ -152,7 +150,7 @@ class User(Resource):
             json: Mensagem de sucesso ou erro.
         """
         try: 
-            usuario = Usuario.objects.get(id=id_usuario)
+            usuario = Usuario_Model.objects.get(id=id_usuario)
             usuario.delete()
             return ({"message": "Usuário deletado com sucesso"}), 200
         except DoesNotExist:

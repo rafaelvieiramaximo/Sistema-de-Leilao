@@ -1,14 +1,10 @@
-from mongoengine import Document, StringField, IntField, ListField, ReferenceField
-import uuid
+from mongoengine import Document, StringField, FloatField
 
 # Modulação da Tabela Usuario
-class Usuario(Document):
-    id_usuario = StringField(required=True, default=lambda: str(uuid.uuid4()), unique=True)
+class Usuario_Model(Document):
     nome = StringField(required=True)
     email = StringField(required=True)
     senha = StringField(required=True)
-    reputacao = StringField(required=True)
-    produtos = ListField(ReferenceField('Produto'))
-    pagamentos = ListField(ReferenceField('Pagamento'))
+    reputacao = FloatField(required=True)
 
-    meta = {'collection': 'usuarios'}
+    meta = {'collection': 'Usuarios'}
