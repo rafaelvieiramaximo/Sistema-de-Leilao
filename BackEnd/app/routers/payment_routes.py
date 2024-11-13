@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-from models.payment_model import Pagamento_Model
+from app.models.payment_model import Pagamento_Model
 from bson import ObjectId
 from flask import jsonify
 from mongoengine import DoesNotExist, ValidationError

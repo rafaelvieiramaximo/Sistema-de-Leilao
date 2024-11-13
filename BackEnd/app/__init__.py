@@ -3,10 +3,10 @@ from flask import Flask
 from flask_restful import Api    
 from dotenv import load_dotenv
 from flask_cors import CORS
-from routers.users_routes import Users, User
-from routers.product_routes import Produto, Produtos
-from routers.payment_routes import Pagamentos, Pagamento
-from db import db
+from app.routers.users_routes import Users, User
+from app.routers.product_routes import Produto, Produtos
+from app.routers.payment_routes import Pagamentos, Pagamento
+from app.db import db
 
 import os
 
