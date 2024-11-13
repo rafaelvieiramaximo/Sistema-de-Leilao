@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
-from app.models.product_model import Produto_Model
-from app.models.users_model import Usuario_Model
+from models.product_model import Produto_Model
+from models.users_model import Usuario_Model
 from mongoengine import DoesNotExist, ValidationError
 from bson import ObjectId
 from flask import jsonify, make_response

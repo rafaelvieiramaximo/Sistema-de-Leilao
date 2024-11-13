@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-from app.models.users_model import Usuario_Model
+from models.users_model import Usuario_Model
 from mongoengine import DoesNotExist, ValidationError
 from bson import ObjectId
 from flask import jsonify

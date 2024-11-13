@@ -1,6 +1,6 @@
 from mongoengine import Document, StringField, FloatField, IntField, ReferenceField
-from app.models.users_model import Usuario_Model
-from app.models.product_model import Produto_Model
+from models.users_model import Usuario_Model
+from models.product_model import Produto_Model
 #Modulação da Tabela Pagamentos
 class Pagamento_Model(Document):
     id_usuario = ReferenceField(Usuario_Model, required=True)

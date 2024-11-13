@@ -1,5 +1,5 @@
 from mongoengine import Document, StringField, FloatField, IntField, DateField, ReferenceField, UUIDField
-from app.models.users_model import Usuario_Model
+from models.users_model import Usuario_Model
 import uuid
     
 #Modulação da Tabela do Produto
