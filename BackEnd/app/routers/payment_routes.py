@@ -128,7 +128,7 @@ class Pagamento(Resource):
             id_pagamento (str): O ID do pagamento.
 
         Returns:
-            json: Mensagem de sucesso ou erro.
+            json: Mensagem de sucesso ou erros.
         """
         try:
             pagamento = Pagamento_Model.objects.get(id=id_pagamento)
