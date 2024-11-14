@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Importando o Router
 import { ProdutoService, Produto } from '../services/produto.service'; // Certifique-se que o caminho do serviço está correto
-import {faCircleLeft} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-produtos',
@@ -10,7 +9,6 @@ import {faCircleLeft} from '@fortawesome/free-solid-svg-icons';
 })
 export class ProdutosComponent implements OnInit {
 
-  back_arrow = faCircleLeft;
 
   produtos: Produto[] = []; // Declaração da propriedade 'produtos'
 
