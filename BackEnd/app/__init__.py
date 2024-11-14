@@ -8,6 +8,7 @@ from app.routers.product_routes import Produto, Produtos
 from app.routers.payment_routes import Pagamentos, Pagamento
 from app.routers.freight_routes import Fretes, Frete
 from app.routers.community_routes import Comunidades, Comunidade
+from app.routers.category_routes import Categorias, Categoria
 from app.db import db
 
 import os
@@ -40,6 +41,8 @@ def create_app():
     api.add_resource(Frete, '/frete', '/frete/<string:cte>')
     api.add_resource(Comunidades, '/comunidades'),
     api.add_resource(Comunidade, '/comunidade', '/comunidade/<string:id_comunidade>')
+    api.add_resource(Categorias, '/categorias'),
+    api.add_resource(Categoria, '/categoria', '/categoria/<string:id_categoria>')
 
     #app.register_blueprint(routes)
 
