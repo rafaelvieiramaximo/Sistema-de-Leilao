@@ -24,7 +24,7 @@ export class LanceService {
   }
 
   getLancesByProdutoId(id_produto: number): Observable<Lance[]> {
-    return this.http.get<Lance[]>(`${this.apiUrl2}/${id_produto}`);
+    return this.http.get<Lance[]>(`${this.apiUrl}`);
   }
 
   createLance(lance: Partial<Lance>): Observable<Lance> {

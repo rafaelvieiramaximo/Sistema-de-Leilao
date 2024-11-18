@@ -8,4 +8,4 @@ class Frete_Model(Document):
     prazo_entrega = DateField()
     id_pagamento = ReferenceField(Pagamento_Model, required=True)
 
-    meta = {'collections': 'Fretes'}
+    meta = {'collections': 'Frete'}

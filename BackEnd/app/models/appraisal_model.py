@@ -6,5 +6,5 @@ class Avaliacao_Model(Document):
     usuario = ReferenceField('Usuario', required=True)
     produto = ReferenceField('Produto', required=True)
 
-    meta = {'collection': 'avaliacoes'}
+    meta = {'collection': 'Avaliacoes'}
     
